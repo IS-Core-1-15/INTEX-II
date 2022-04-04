@@ -18,6 +18,6 @@ namespace INTEX_II.Models
 
         }
 
-        public DbSet<Crash> Crashes { get; set; }
+        public DbSet<Crash> table_name { get; set; }
     }
 }

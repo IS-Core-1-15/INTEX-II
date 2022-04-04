@@ -14,7 +14,7 @@ namespace INTEX_II.Models
             _context = temp;
         }
 
-        public IQueryable<Crash> Crashes => _context.Crashes;
+        public IQueryable<Crash> Crashes => _context.table_name;
 
         public void CreateCrash(Crash c)
         {
