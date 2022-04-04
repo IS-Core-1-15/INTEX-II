@@ -7905,6 +7905,10 @@ textarea.form-control-lg {
   background-image: var(--bs-gradient) !important;
 }
 
+.custom-nav-bar-bg {
+    background-image: linear-gradient(to bottom right, orange, black);
+}
+
 .user-select-all {
   -webkit-user-select: all !important;
      -moz-user-select: all !important;
