@@ -14,13 +14,15 @@ namespace INTEX_II.Controllers
     {
         private ICrashRepository _repo;
 
-        // take out later possibly
-        private readonly ILogger<HomeController> _logger;
+        public HomeController(ICrashRepository temp) => _repo = temp;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+        //// take out later possibly
+        //private readonly ILogger<HomeController> _logger;
+
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
 
         //index get
         public IActionResult Index()
@@ -34,25 +36,25 @@ namespace INTEX_II.Controllers
             //max crashes per page
             int pageSize = 25;
 
-            //var yeet = new CrashesViewModel
-            //{
-            //    //crashes queryable with only crashes in filter
-            //    Crashes = _repo.Crashes
-            //    .Where(c => c.COUNTY_NAME == countyName)
-            //    .OrderBy(c => c.CRASH_DATETIME)
-            //    .Skip(pageSize * (pageNum - 1))
-            //    .Take(pageSize),
+            var yeet = new CrashesViewModel
+            {
+                //crashes queryable with only crashes in filter
+                Crashes = _repo.Crashes
+                .Where(c => c.COUNTY_NAME == countyName)
+                .OrderBy(c => c.CRASH_DATETIME)
+                .Skip(pageSize * (pageNum - 1))
+                .Take(pageSize),
 
-            //    // page info saved as type page info
-            //    PageInfo = new PageInfo
-            //    {
-            //        TotalNumCrashes = (countyName == null ?
-            //            _repo.Crashes.Count()
-            //            : _repo.Crashes.Where(yeet => yeet.COUNTY_NAME == countyName).Count()),
-            //        CrashesPerPage = pageSize,
-            //        CurrentPage = pageNum
-            //    }
-            //};
+                // page info saved as type page info
+                PageInfo = new PageInfo
+                {
+                    TotalNumCrashes = (countyName == null ?
+                        _repo.Crashes.Count()
+                        : _repo.Crashes.Where(yeet => yeet.COUNTY_NAME == countyName).Count()),
+                    CrashesPerPage = pageSize,
+                    CurrentPage = pageNum
+                }
+            };
 
             return View(/*yeet*/);
         }

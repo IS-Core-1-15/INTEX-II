@@ -30,9 +30,9 @@ namespace INTEX_II
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<CrashContext>(options =>
+            //    options.UseMySql(
+            //        Configuration.GetConnectionString("DefaultConnection")));
 
             //services.AddDbContext<CrashContext>(options =>
             //    options.UseMySql(
@@ -43,13 +43,18 @@ namespace INTEX_II
                 options.UseMySql(Configuration["ConnectionStrings:CrashConnection"]);
             });
 
-            services.AddDbContext<AppIdentityDbContext>(options =>
-            {
-                options.UseMySql(Configuration["ConnectionStrings:IdentityConnection"]);
-            });
+            //services.AddDbContext<CrashContext>(options =>
+            //{
+            //    options.UseMySql(Configuration["ConnectionStrings:CrashConnection"]);
+            //});
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            //services.AddDbContext<AppIdentityDbContext>(options =>
+            //{
+            //    options.UseMySql(Configuration["ConnectionStrings:IdentityConnection"]);
+            //});
+
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<AppIdentityDbContext>();
 
             services.Configure<IdentityOptions>(options =>
             {
