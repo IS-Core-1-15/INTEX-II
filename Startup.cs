@@ -50,12 +50,23 @@ namespace INTEX_II
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                // changed from default Password settings.
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 12;
+                options.Password.RequiredUniqueChars = 5;
+            });
+
             services.AddControllersWithViews();
+            
             services.AddRazorPages();
 
             services.AddScoped<ICrashRepository, EFCrashRepository>();
-
-            services.AddRazorPages();
 
             services.AddDistributedMemoryCache();
 
