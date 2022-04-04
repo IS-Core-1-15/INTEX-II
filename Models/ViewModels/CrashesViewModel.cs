@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace INTEX_II.Models.ViewModels
 {
+    // for passing in more than one model to views
     public class CrashesViewModel
     {
         public IQueryable<Crash> Crashes { get; set; }
