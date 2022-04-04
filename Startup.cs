@@ -34,6 +34,8 @@ namespace INTEX_II
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddServerSideBlazor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,17 +64,17 @@ namespace INTEX_II
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("countypage", "{countyName}/Page-{pageNum}", new { Controller = "Home", action = "SummaryInformation" });
+                //endpoints.MapControllerRoute("countypage", "{countyName}/Page-{pageNum}", new { Controller = "Home", action = "SummaryInformation" });
 
-                endpoints.MapControllerRoute("Paging", "Page-{pageNum}", new { Controller = "Home", action = "SummaryInformation" , pageNum = 1});
+                //endpoints.MapControllerRoute("Paging", "Page-{pageNum}", new { Controller = "Home", action = "SummaryInformation" , pageNum = 1});
 
-                endpoints.MapControllerRoute("county", "{countyName}", new { Controller = "Home", action = "SummaryInformation" });
+                //endpoints.MapControllerRoute("county", "{countyName}", new { Controller = "Home", action = "SummaryInformation" });
 
                 endpoints.MapDefaultControllerRoute();
 
                 endpoints.MapRazorPages();
 
-                //endpoints.MapBlazorHub();
+                endpoints.MapBlazorHub();
 
                 endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
 
