@@ -33,9 +33,14 @@ namespace INTEX_II
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
+            //services.AddDbContext<CrashContext>(options =>
+            //    options.UseMySql(
+            //        Configuration.GetConnectionString("RDSConnectionString")));
+
             services.AddDbContext<CrashContext>(options =>
-                options.UseMySql(
-                    Configuration.GetConnectionString("RDSConnectionString")));
+            {
+                options.UseMySql(Configuration["ConnectionStrings:CrashConnection"]);
+            });
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
