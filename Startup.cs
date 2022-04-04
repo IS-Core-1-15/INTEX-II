@@ -54,8 +54,6 @@ namespace INTEX_II
             
             app.UseStaticFiles();
 
-            app.UseSession();
-
             app.UseRouting();
 
             app.UseAuthentication();
