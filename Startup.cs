@@ -2,6 +2,7 @@ using INTEX_II.Data;
 using INTEX_II.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -42,10 +43,27 @@ namespace INTEX_II
                 options.UseMySql(Configuration["ConnectionStrings:CrashConnection"]);
             });
 
+            services.AddDbContext<AppIdentityDbContext>(options =>
+            {
+                options.UseMySql(Configuration["ConnectionStrings:IdentityConnection"]);
+            });
+
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddScoped<ICrashRepository, EFCrashRepository>();
+
+            services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddServerSideBlazor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +83,8 @@ namespace INTEX_II
             app.UseHttpsRedirection();
             
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 
