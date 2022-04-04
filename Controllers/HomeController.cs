@@ -11,6 +11,7 @@ namespace INTEX_II.Controllers
 {
     public class HomeController : Controller
     {
+        // take out later possibly
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)

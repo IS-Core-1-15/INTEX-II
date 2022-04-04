@@ -51,11 +51,15 @@ namespace INTEX_II
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+            
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 
             app.UseAuthentication();
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
