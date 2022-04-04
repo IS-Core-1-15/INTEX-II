@@ -40,10 +40,11 @@ namespace INTEX_II.Controllers
             {
                 //crashes queryable with only crashes in filter
                 Crashes = _repo.Crashes
-                .Where(c => c.COUNTY_NAME == countyName)
+                .Where(c => c.COUNTY_NAME == countyName || countyName == null)
                 .OrderBy(c => c.CRASH_DATETIME)
                 .Skip(pageSize * (pageNum - 1))
-                .Take(pageSize),
+                .Take(pageSize)
+                .ToList(),
 
                 // page info saved as type page info
                 PageInfo = new PageInfo
@@ -56,7 +57,7 @@ namespace INTEX_II.Controllers
                 }
             };
 
-            return View(/*yeet*/);
+            return View(yeet);
         }
 
 

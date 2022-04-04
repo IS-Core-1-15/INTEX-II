@@ -8,8 +8,8 @@
 
     <!--section for crashes listed out on page-->
     @foreach (Crash c in Model.Crashes)
-    {
-        <partial name="CrashSummary" model="c" />
+    {        
+        <partial name="CrashSummary" model="@c" />
     }
 
     <!--links ot other pages of crashes-->
