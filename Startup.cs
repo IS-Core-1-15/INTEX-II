@@ -1,6 +1,8 @@
 using INTEX_II.Data;
+using INTEX_II.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -8,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Protocols;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,10 +33,46 @@ namespace INTEX_II
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
+            //services.AddDbContext<CrashContext>(options =>
+            //    options.UseMySql(
+            //        Configuration.GetConnectionString("RDSConnectionString")));
+
+            services.AddDbContext<CrashContext>(options =>
+            {
+                options.UseMySql(Configuration["ConnectionStrings:CrashConnection"]);
+            });
+
+            services.AddDbContext<AppIdentityDbContext>(options =>
+            {
+                options.UseMySql(Configuration["ConnectionStrings:IdentityConnection"]);
+            });
+
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                // changed from default Password settings.
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 12;
+                options.Password.RequiredUniqueChars = 5;
+            });
+
             services.AddControllersWithViews();
+            
             services.AddRazorPages();
+
+            services.AddScoped<ICrashRepository, EFCrashRepository>();
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddServerSideBlazor();
         }
@@ -55,6 +94,8 @@ namespace INTEX_II
             app.UseHttpsRedirection();
             
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 
