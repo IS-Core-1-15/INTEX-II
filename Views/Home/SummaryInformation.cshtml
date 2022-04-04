@@ -1,5 +1,21 @@
 ﻿@{
     ViewData["Title"] = "Summary Crash Information";
 }
+@model CrashesViewModel
 
-<p>Replace this with summary information about the crashes that is super cool and stuff.</p>
+<div class="text-center">
+    <h1 class="display-4">Crashes</h1>
+
+    <!--section for crashes listed out on page-->
+    @foreach (Crash c in Model.Crashes)
+    {
+        <partial name="CrashSummary" model="c" />
+    }
+
+    <!--links ot other pages of crashes-->
+    <div page-links="@Model.PageInfo" page-action="SummaryInformation" page-classes-enabled="True"
+         page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
+         class="btn-group pull-right m-1">
+
+    </div>
+</div>
