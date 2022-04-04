@@ -10,7 +10,7 @@ namespace INTEX_II.Models
     {
         public CrashContext()
         {
-
+         
         }
 
         public CrashContext(DbContextOptions<CrashContext> options) : base(options)
