@@ -62,6 +62,20 @@ namespace INTEX_II
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute("countypage", "{countyName}/Page-{pageNum}", new { Controller = "Home", action = "SummaryInformation" });
+
+                endpoints.MapControllerRoute("Paging", "Page-{pageNum}", new { Controller = "Home", action = "SummaryInformation" , pageNum = 1});
+
+                endpoints.MapControllerRoute("county", "{countyName}", new { Controller = "Home", action = "SummaryInformation" });
+
+                endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
+
+                //endpoints.MapBlazorHub();
+
+                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
