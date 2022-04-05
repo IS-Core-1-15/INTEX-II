@@ -30,26 +30,21 @@ namespace INTEX_II
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-
-            //services.AddDbContext<CrashContext>(options =>
-            //    options.UseMySql(
-            //        Configuration.GetConnectionString("RDSConnectionString")));
-
             services.AddDbContext<CrashContext>(options =>
             {
-                options.UseMySql(Configuration["ConnectionStrings:CrashConnection"]);
+                options.UseMySql(Environment.GetEnvironmentVariable("CrashConnection"));
             });
 
             services.AddDbContext<AppIdentityDbContext>(options =>
             {
-                options.UseMySql(Configuration["ConnectionStrings:IdentityConnection"]);
+                options.UseMySql(Environment.GetEnvironmentVariable("IdentityConnection"));
             });
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppIdentityDbContext>();
+
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<AppIdentityDbContext>();
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -115,15 +110,21 @@ namespace INTEX_II
 
                 endpoints.MapRazorPages();
 
-                endpoints.MapBlazorHub();
+                //endpoints.MapBlazorHub();
 
                 endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
+
+                endpoints.MapControllerRoute(
+                    name: "admin",
+                    pattern: "{controller=Admin}/{action=Main}/{pageNum?}");
 
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }

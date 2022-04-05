@@ -14,7 +14,7 @@ namespace INTEX_II.Models
             _context = temp;
         }
 
-        public IQueryable<Crash> Crashes => _context.Crashes;
+        public IQueryable<Crash> Crashes => _context.CrashData;
 
         public void CreateCrash(Crash c)
         {
@@ -25,10 +25,12 @@ namespace INTEX_II.Models
         public void DeleteCrash(Crash c)
         {
             _context.Remove(c);
+            _context.SaveChanges();
         }
 
         public void SaveCrash(Crash c)
         {
+            _context.Update(c);
             _context.SaveChanges();
         }
     }

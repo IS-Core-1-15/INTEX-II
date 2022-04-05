@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Admin View";
+}
+@model CrashesViewModel
+
+<div class="text-center">
+    <h1 class="display-4">Crashes</h1>
+
+    <a asp-action="Add" asp-route-returnPage="@Model.PageInfo.CurrentPage" class="btn btn-success btn-sm">Create New Record</a>
+
+    <!--table of crashes-->
+    <table class="table table-sm table-striped table-bordered table-hover">
+
+        <thead>
+            <tr>
+                <th>Crash ID</th>
+                <th>Date</th>
+                <th>County</th>
+                <th>City</th>
+            </tr>
+        </thead>
+
+        <!--lists out each book and data about book along with buttons for details, edit, and delete-->
+        <tbody>
+            @foreach (Crash c in Model.Crashes)
+            {
+            <tr>
+                <td>@c.CRASH_ID</td>
+                <td>@c.CRASH_DATETIME</td>
+                <td>@c.COUNTY_NAME</td>
+                <td>@c.CITY</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@c.CRASH_ID" asp-route-returnPage="@Model.PageInfo.CurrentPage" class="btn btn-info btn-sm">Details</a>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@c.CRASH_ID" asp-route-returnPage="@Model.PageInfo.CurrentPage" class="btn btn-warning btn-sm">Edit</a>
+                </td>
+                <td>
+                    <a asp-action="DeleteConfirmation" asp-route-id="@c.CRASH_ID" asp-route-returnPage="@Model.PageInfo.CurrentPage" class="btn btn-danger btn-sm" >Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    <!--links ot other pages of crashes-->
+    <div page-links="@Model.PageInfo" page-action="Main" page-classes-enabled="true"
+         page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
+         class="btn-group pull-right m-1">
+    </div>
+
+</div>
