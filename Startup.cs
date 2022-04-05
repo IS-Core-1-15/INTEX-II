@@ -36,7 +36,7 @@ namespace INTEX_II
         {
             services.AddDbContext<CrashContext>(options =>
             {
-                options.UseMySql(crashconn);
+                options.UseMySql(Configuration["ConnectionStrings:IdentityConnection"]);
             });
 
             services.AddDbContext<AppIdentityDbContext>(options =>
