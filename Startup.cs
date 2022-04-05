@@ -32,12 +32,12 @@ namespace INTEX_II
         {
             services.AddDbContext<CrashContext>(options =>
             {
-                options.UseMySql(Configuration["ConnectionStrings:CrashConnection"]);
+                options.UseMySql(Environment.GetEnvironmentVariable("CrashConnection"));
             });
 
             services.AddDbContext<AppIdentityDbContext>(options =>
             {
-                options.UseMySql(Configuration["ConnectionStrings:IdentityConnection"]);
+                options.UseMySql(Environment.GetEnvironmentVariable("IdentityConnection"));
             });
 
             services.AddIdentity<IdentityUser, IdentityRole>()
