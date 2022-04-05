@@ -26,7 +26,7 @@ jobs:
         run: |
           aws elasticbeanstalk create-application-version \
           --application-name UtahCrashData \
-          --source-bundle S3Bucket="elasticbeanstalk-us-west-2-038956037175",S3Key="deploy_package.zip" \
+          --source-bundle S3Bucket="elasticbeanstalk-us-west-2-038956037175",S3Key="deploy_package-${{ github.sha }}.zip" \
           --version-label "ver-${{ github.sha }}" \
           --description "commit-sha-${{ github.sha }}"
 
