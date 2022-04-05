@@ -7,43 +7,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Git setup
+        uses: actions/checkout@v2
+      
+      - name: Dotnet run
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0' # SDK Version to use; x will use the latest version of the 3.1 channel
+      
+      - name: Publish prod
+        run: dotnet restore; dotnet publish -r linux-x64 --configuration "Release" --self-contained "true" -o ./site;
 
-      - name: Generate deployment package
-        run: zip -r deploy.zip . -x '*.git*'
+      - name: Generate deployment package 
+        run: zip -r deploy.zip ./site aws-windows-deployment-manifest.json
 
       - name: Deploy to EB
-        uses: einaregilsson/beanstalk-deploy@v20
+        uses: einaregilsson/beanstalk-deploy@v16
         with:
           aws_access_key: ${{ secrets.ACCESSKEYID }}
           aws_secret_key: ${{ secrets.SECRETACCESSKEY }}
           application_name: UtahCrashData
-          environment_name: UtahCrashData-env
-          existing_bucket_name: elasticbeanstalk-us-west-2-038956037175
-          version_label: ver-${{ github.sha }}
+          environment_name: Utahcrashdata-env
+          version_label: ${{ github.run_id }}
           region: us-west-2
-          deployment_package: deploy.zip
-
-      # - name: Generate deployment package
-      #   run: zip -r deploy_package-${{ github.sha }}.zip .
-
-      # - name: Configure AWS Credentials
-      #   uses: aws-actions/configure-aws-credentials@v1
-      #   with:
-      #     aws-access-key-id: ${{ secrets.ACCESSKEYID }}
-      #     aws-secret-access-key: ${{ secrets.SECRETACCESSKEY }}
-      #     aws-region: "us-west-2"
-
-      # - name: Upload package to S3 bucket
-      #   run: aws s3 cp deploy_package-${{ github.sha }}.zip s3://elasticbeanstalk-us-west-2-038956037175/
-
-      # - name: Create new ElasticBeanstalk Application Version
-      #   run: |
-      #     aws elasticbeanstalk create-application-version \
-      #     --application-name UtahCrashData \
-      #     --source-bundle S3Bucket="elasticbeanstalk-us-west-2-038956037175",S3Key="deploy_package-${{ github.sha }}.zip" \
-      #     --version-label "ver-${{ github.sha }}" \
-      #     --description "commit-sha-${{ github.sha }}"
-
-      # - name: Deploy new ElasticBeanstalk Application Version
-      #   run: aws elasticbeanstalk update-environment --environment-name UtahCrashData-env --version-label "ver-${{ github.sha }}"
+          deployment_package: site.zip
