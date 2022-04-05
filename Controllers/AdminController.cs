@@ -76,11 +76,6 @@ namespace INTEX_II.Controllers
         {
             if (ModelState.IsValid)
             {
-                c.CRASH_ID = _repo.Crashes
-                    .OrderBy(x => x.CRASH_ID)
-                    .ToList()
-                    .LastOrDefault()
-                    .CRASH_ID + 1;
 
                 _repo.CreateCrash(c);
 
