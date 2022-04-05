@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -92,6 +93,8 @@ namespace INTEX_II.Controllers
         {
             var crash = _repo.Crashes.FirstOrDefault(yeet => yeet.CRASH_ID == id);
 
+            ViewBag.dateTime = DateTime.Parse(crash.CRASH_DATETIME).ToString("s");
+
             ViewBag.pageNumReturn = returnPage;
 
             return View(crash);
@@ -102,6 +105,8 @@ namespace INTEX_II.Controllers
         {
             if (ModelState.IsValid)
             {
+                c.CRASH_DATETIME = DateTime.Parse(c.CRASH_DATETIME).ToString("M/dd/yy HH:mm");
+
                 _repo.SaveCrash(c);
 
                 return RedirectToAction("Main");
