@@ -30,28 +30,18 @@ namespace INTEX_II
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<CrashContext>(options =>
-            //    options.UseMySql(
-            //        Configuration.GetConnectionString("DefaultConnection")));
-
-            //services.AddDbContext<CrashContext>(options =>
-            //    options.UseMySql(
-            //        Configuration.GetConnectionString("RDSConnectionString")));
-
             services.AddDbContext<CrashContext>(options =>
             {
                 options.UseMySql(Configuration["ConnectionStrings:CrashConnection"]);
             });
 
-            //services.AddDbContext<CrashContext>(options =>
-            //{
-            //    options.UseMySql(Configuration["ConnectionStrings:CrashConnection"]);
-            //});
+            services.AddDbContext<AppIdentityDbContext>(options =>
+            {
+                options.UseMySql(Configuration["ConnectionStrings:IdentityConnection"]);
+            });
 
-            //services.AddDbContext<AppIdentityDbContext>(options =>
-            //{
-            //    options.UseMySql(Configuration["ConnectionStrings:IdentityConnection"]);
-            //});
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppIdentityDbContext>();
 
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddEntityFrameworkStores<AppIdentityDbContext>();
@@ -133,6 +123,8 @@ namespace INTEX_II
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }
