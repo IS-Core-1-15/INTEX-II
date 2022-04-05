@@ -120,9 +120,13 @@ namespace INTEX_II
 
                 endpoints.MapRazorPages();
 
-                endpoints.MapBlazorHub();
+                //endpoints.MapBlazorHub();
 
                 endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
+
+                endpoints.MapControllerRoute(
+                    name: "admin",
+                    pattern: "{controller=Admin}/{action=Main}/{pageNum?}");
 
                 endpoints.MapControllerRoute(
                     name: "default",

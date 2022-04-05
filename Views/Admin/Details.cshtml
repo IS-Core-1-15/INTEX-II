@@ -1,0 +1,186 @@
+﻿@model INTEX_II.Models.Crash
+
+@{
+    ViewData["Title"] = "Crash Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Crash</h4>
+    <hr />
+    <table class=" table table-striped">
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.CRASH_DATETIME)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.CRASH_DATETIME)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.ROUTE)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.ROUTE)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.MILEPOINT)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.MILEPOINT)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.LAT_UTM_Y)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.LAT_UTM_Y)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.LONG_UTM_X)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.LONG_UTM_X)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.MAIN_ROAD_NAME)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.MAIN_ROAD_NAME)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.CITY)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.CITY)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.COUNTY_NAME)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.COUNTY_NAME)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.CRASH_SEVERITY_ID)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.CRASH_SEVERITY_ID)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.WORK_ZONE_RELATED)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.WORK_ZONE_RELATED)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.PEDESTRIAN_INVOLVED)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.PEDESTRIAN_INVOLVED)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.BICYCLIST_INVOLVED)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.BICYCLIST_INVOLVED)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.MOTORCYCLE_INVOLVED)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.MOTORCYCLE_INVOLVED)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.IMPROPER_RESTRAINT)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.IMPROPER_RESTRAINT)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.UNRESTRAINED)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.UNRESTRAINED)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.DUI)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.DUI)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.INTERSECTION_RELATED)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.INTERSECTION_RELATED)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.WILD_ANIMAL_RELATED)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.WILD_ANIMAL_RELATED)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.DOMESTIC_ANIMAL_RELATED)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.DOMESTIC_ANIMAL_RELATED)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.OVERTURN_ROLLOVER)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.OVERTURN_ROLLOVER)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.COMMERCIAL_MOTOR_VEH_INVOLVED)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.COMMERCIAL_MOTOR_VEH_INVOLVED)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.TEENAGE_DRIVER_INVOLVED)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.TEENAGE_DRIVER_INVOLVED)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.OLDER_DRIVER_INVOLVED)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.OLDER_DRIVER_INVOLVED)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.NIGHT_DARK_CONDITION)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.NIGHT_DARK_CONDITION)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.SINGLE_VEHICLE)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.SINGLE_VEHICLE)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.DISTRACTED_DRIVING)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.DISTRACTED_DRIVING)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.DROWSY_DRIVING)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.DROWSY_DRIVING)
+        </td></tr>
+        <tr><td class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.ROADWAY_DEPARTURE)
+        </td>
+        <td class = "col-sm-8">
+            @Html.DisplayFor(model => model.ROADWAY_DEPARTURE)
+        </td></tr>
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CRASH_ID" asp-route-returnPage="@ViewBag.pageNumReturn" class="btn btn-warning btn-sm">Edit</a> |
+    <a asp-action="Main" asp-route-pageNum="@ViewBag.pageNumReturn" class="btn btn-secondary btn-sm">Back to List</a>
+</div>

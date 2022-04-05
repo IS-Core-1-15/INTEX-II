@@ -1,0 +1,31 @@
+﻿@page "/admin/crashes/details/{id:long}"
+
+<!--details page-->
+<h3 class="bg-info text-white text-center p-1">Details</h3>
+
+<!--table with crash info-->
+<table class="table table-bordered table-sm table-striped table-hover">
+    <tbody>
+        <tr class="info"><th>Crash ID:</th><td>@c.CRASH_ID</td></tr>
+        <tr><th>Date:</th><td>@c.CRASH_DATETIME</td></tr>
+    </tbody>
+</table>
+
+@code {
+    [Inject]
+    public ICrashRepository repo { get; set; }
+
+    //id from slug
+    [Parameter]
+    public long Id { get; set; }
+
+    public Crash c { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        c = repo.Crashes.FirstOrDefault(x => x.CRASH_ID == Id);
+    }
+
+    //create url for editing this crash
+    public string EditUrl => $"/admin/crashes/edit/{c.CRASH_ID}";
+}
