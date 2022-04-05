@@ -1,5 +1,6 @@
 ﻿using INTEX_II.Models;
 using INTEX_II.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace INTEX_II.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private ICrashRepository _repo;
