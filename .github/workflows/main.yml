@@ -30,4 +30,4 @@ jobs:
           environment_name: Utahcrashdata-env
           version_label: ${{ github.run_id }}
           region: us-west-2
-          deployment_package: site.zip
+          deployment_package: deploy.zip
