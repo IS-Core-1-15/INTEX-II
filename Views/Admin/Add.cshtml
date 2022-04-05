@@ -1,0 +1,162 @@
+﻿@model INTEX_II.Models.Crash
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h4>Crash</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CRASH_DATETIME" class="control-label"></label>
+                <input asp-for="CRASH_DATETIME" class="form-control" />
+                <span asp-validation-for="CRASH_DATETIME" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ROUTE" class="control-label"></label>
+                <input asp-for="ROUTE" class="form-control" />
+                <span asp-validation-for="ROUTE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MILEPOINT" class="control-label"></label>
+                <input asp-for="MILEPOINT" class="form-control" />
+                <span asp-validation-for="MILEPOINT" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LAT_UTM_Y" class="control-label"></label>
+                <input asp-for="LAT_UTM_Y" class="form-control" />
+                <span asp-validation-for="LAT_UTM_Y" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LONG_UTM_X" class="control-label"></label>
+                <input asp-for="LONG_UTM_X" class="form-control" />
+                <span asp-validation-for="LONG_UTM_X" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MAIN_ROAD_NAME" class="control-label"></label>
+                <input asp-for="MAIN_ROAD_NAME" class="form-control" />
+                <span asp-validation-for="MAIN_ROAD_NAME" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CITY" class="control-label"></label>
+                <input asp-for="CITY" class="form-control" />
+                <span asp-validation-for="CITY" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="COUNTY_NAME" class="control-label"></label>
+                <input asp-for="COUNTY_NAME" class="form-control" />
+                <span asp-validation-for="COUNTY_NAME" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CRASH_SEVERITY_ID" class="control-label"></label>
+                <input asp-for="CRASH_SEVERITY_ID" class="form-control" />
+                <span asp-validation-for="CRASH_SEVERITY_ID" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="WORK_ZONE_RELATED" /> @Html.DisplayNameFor(model => model.WORK_ZONE_RELATED)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="PEDESTRIAN_INVOLVED" /> @Html.DisplayNameFor(model => model.PEDESTRIAN_INVOLVED)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="BICYCLIST_INVOLVED" /> @Html.DisplayNameFor(model => model.BICYCLIST_INVOLVED)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="MOTORCYCLE_INVOLVED" /> @Html.DisplayNameFor(model => model.MOTORCYCLE_INVOLVED)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IMPROPER_RESTRAINT" /> @Html.DisplayNameFor(model => model.IMPROPER_RESTRAINT)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="UNRESTRAINED" /> @Html.DisplayNameFor(model => model.UNRESTRAINED)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DUI" /> @Html.DisplayNameFor(model => model.DUI)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="INTERSECTION_RELATED" /> @Html.DisplayNameFor(model => model.INTERSECTION_RELATED)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="WILD_ANIMAL_RELATED" /> @Html.DisplayNameFor(model => model.WILD_ANIMAL_RELATED)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DOMESTIC_ANIMAL_RELATED" /> @Html.DisplayNameFor(model => model.DOMESTIC_ANIMAL_RELATED)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="OVERTURN_ROLLOVER" /> @Html.DisplayNameFor(model => model.OVERTURN_ROLLOVER)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" /> @Html.DisplayNameFor(model => model.COMMERCIAL_MOTOR_VEH_INVOLVED)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="TEENAGE_DRIVER_INVOLVED" /> @Html.DisplayNameFor(model => model.TEENAGE_DRIVER_INVOLVED)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="OLDER_DRIVER_INVOLVED" /> @Html.DisplayNameFor(model => model.OLDER_DRIVER_INVOLVED)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="NIGHT_DARK_CONDITION" /> @Html.DisplayNameFor(model => model.NIGHT_DARK_CONDITION)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="SINGLE_VEHICLE" /> @Html.DisplayNameFor(model => model.SINGLE_VEHICLE)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DISTRACTED_DRIVING" /> @Html.DisplayNameFor(model => model.DISTRACTED_DRIVING)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DROWSY_DRIVING" /> @Html.DisplayNameFor(model => model.DROWSY_DRIVING)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="ROADWAY_DEPARTURE" /> @Html.DisplayNameFor(model => model.ROADWAY_DEPARTURE)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-primary btn-sm" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Main" asp-route-pageNum="@ViewBag.pageNumReturn" class="btn btn-secondary btn-sm">Cancel</a>
+</div>

@@ -62,6 +62,14 @@ namespace INTEX_II.Controllers
         }
 
         [HttpGet]
+        public IActionResult Add(int returnPage)
+        {
+            ViewBag.pageNumReturn = returnPage;
+
+            return View();
+        }
+
+        [HttpGet]
         public IActionResult Edit(int id, int returnPage)
         {
             var crash = _repo.Crashes.FirstOrDefault(yeet => yeet.CRASH_ID == id);
