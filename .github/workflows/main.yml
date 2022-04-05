@@ -18,9 +18,9 @@ jobs:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-          aws-access-key-id: ${{ secrets.ACCESSKEYID }}
-          aws-secret-access-key: ${{ secrets.SECRETACCESSKEY }}
-          aws-region: "us-west-2"
+         aws-access-key-id: ${{ secrets.ACCESSKEYID }}
+         aws-secret-access-key: ${{ secrets.SECRETACCESSKEY }}
+         aws-region: "us-west-2"
 
     - name: Upload package to S3 bucket
       run: aws s3 cp deploy_package.zip s3://elasticbeanstalk-us-west-2-038956037175/
