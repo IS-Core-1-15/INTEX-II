@@ -69,6 +69,27 @@ namespace INTEX_II.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Add(Crash c)
+        {
+            if (ModelState.IsValid)
+            {
+                c.CRASH_ID = _repo.Crashes
+                    .OrderBy(x => x.CRASH_ID)
+                    .ToList()
+                    .LastOrDefault()
+                    .CRASH_ID + 1;
+
+                _repo.CreateCrash(c);
+
+                return RedirectToAction("Main");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
         [HttpGet]
         public IActionResult Edit(int id, int returnPage)
         {
@@ -79,6 +100,21 @@ namespace INTEX_II.Controllers
             return View(crash);
         }
 
+        [HttpPost]
+        public IActionResult Edit(Crash c)
+        {
+            if (ModelState.IsValid)
+            {
+                _repo.SaveCrash(c);
+
+                return RedirectToAction("Main");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
         [HttpGet]
         public IActionResult DeleteConfirmation(int id, int returnPage)
         {
@@ -87,6 +123,14 @@ namespace INTEX_II.Controllers
             ViewBag.pageNumReturn = returnPage;
 
             return View(crash);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteConfirmation(Crash c)
+        {
+            _repo.DeleteCrash(c);
+
+            return RedirectToAction("Main");
         }
 
 
