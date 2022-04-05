@@ -7909,6 +7909,18 @@ textarea.form-control-lg {
     background-image: linear-gradient(to bottom right, orange, black);
 }
 
+.custom-btn-warning {
+    background-image: linear-gradient(to bottom right, orange, yellow);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.custom-content-background {
+    background-image: linear-gradient(to bottom right, rgb(221 221 221), white);
+}
+
 .user-select-all {
   -webkit-user-select: all !important;
      -moz-user-select: all !important;
