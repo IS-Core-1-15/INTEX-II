@@ -126,8 +126,10 @@ namespace INTEX_II.Controllers
         }
 
         [HttpPost]
-        public IActionResult DeleteConfirmation(Crash c)
+        public IActionResult DeleteConfirmation(int id)
         {
+            Crash c = _repo.Crashes.FirstOrDefault(yeet => yeet.CRASH_ID == id);
+            
             _repo.DeleteCrash(c);
 
             return RedirectToAction("Main");
