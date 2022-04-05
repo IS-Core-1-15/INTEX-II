@@ -10,25 +10,39 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Generate deployment package
-        run: zip -r deploy_package-${{ github.sha }}.zip .
+        run: zip -r deploy.zip . -x '*.git*'
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v20
         with:
-          aws-access-key-id: ${{ secrets.ACCESSKEYID }}
-          aws-secret-access-key: ${{ secrets.SECRETACCESSKEY }}
-          aws-region: "us-west-2"
+          aws_access_key: ${{ secrets.ACCESSKEYID }}
+          aws_secret_key: ${{ secrets.SECRETACCESSKEY }}
+          application_name: UtahCrashData
+          environment_name: UtahCrashData-env
+          version_label: 12345
+          region: us-west-2
+          deployment_package: deploy.zip
 
-      - name: Upload package to S3 bucket
-        run: aws s3 cp deploy_package-${{ github.sha }}.zip s3://elasticbeanstalk-us-west-2-038956037175/
+      # - name: Generate deployment package
+      #   run: zip -r deploy_package-${{ github.sha }}.zip .
 
-      - name: Create new ElasticBeanstalk Application Version
-        run: |
-          aws elasticbeanstalk create-application-version \
-          --application-name UtahCrashData \
-          --source-bundle S3Bucket="elasticbeanstalk-us-west-2-038956037175",S3Key="deploy_package-${{ github.sha }}.zip" \
-          --version-label "ver-${{ github.sha }}" \
-          --description "commit-sha-${{ github.sha }}"
+      # - name: Configure AWS Credentials
+      #   uses: aws-actions/configure-aws-credentials@v1
+      #   with:
+      #     aws-access-key-id: ${{ secrets.ACCESSKEYID }}
+      #     aws-secret-access-key: ${{ secrets.SECRETACCESSKEY }}
+      #     aws-region: "us-west-2"
 
-      - name: Deploy new ElasticBeanstalk Application Version
-        run: aws elasticbeanstalk update-environment --environment-name UtahCrashData-env --version-label "ver-${{ github.sha }}"
+      # - name: Upload package to S3 bucket
+      #   run: aws s3 cp deploy_package-${{ github.sha }}.zip s3://elasticbeanstalk-us-west-2-038956037175/
+
+      # - name: Create new ElasticBeanstalk Application Version
+      #   run: |
+      #     aws elasticbeanstalk create-application-version \
+      #     --application-name UtahCrashData \
+      #     --source-bundle S3Bucket="elasticbeanstalk-us-west-2-038956037175",S3Key="deploy_package-${{ github.sha }}.zip" \
+      #     --version-label "ver-${{ github.sha }}" \
+      #     --description "commit-sha-${{ github.sha }}"
+
+      # - name: Deploy new ElasticBeanstalk Application Version
+      #   run: aws elasticbeanstalk update-environment --environment-name UtahCrashData-env --version-label "ver-${{ github.sha }}"
