@@ -27,17 +27,20 @@ namespace INTEX_II
 
         public IConfiguration Configuration { get; }
 
+        string crashconn = Environment.GetEnvironmentVariable("CrashConnection");
+        string identityconn = Environment.GetEnvironmentVariable("IdentityConnection");
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<CrashContext>(options =>
             {
-                options.UseMySql(Environment.GetEnvironmentVariable("CrashConnection"));
+                options.UseMySql(crashconn);
             });
 
             services.AddDbContext<AppIdentityDbContext>(options =>
             {
-                options.UseMySql(Environment.GetEnvironmentVariable("IdentityConnection"));
+                options.UseMySql(identityconn);
             });
 
             services.AddIdentity<IdentityUser, IdentityRole>()
