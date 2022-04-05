@@ -8,7 +8,7 @@
 
     <!--section for crashes listed out on page-->
     @foreach (Crash c in Model.Crashes)
-    {        
+    {
         <partial name="CrashSummary" model="@c" />
     }
 
@@ -16,6 +16,6 @@
     <div page-links="@Model.PageInfo" page-action="SummaryInformation" page-classes-enabled="true"
          page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
          class="btn-group pull-right m-1">
-
     </div>
+
 </div>
