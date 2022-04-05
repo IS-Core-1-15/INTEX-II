@@ -20,7 +20,7 @@ jobs:
           application_name: UtahCrashData
           environment_name: UtahCrashData-env
           existing_bucket_name: elasticbeanstalk-us-west-2-038956037175
-          version_label: 12345
+          version_label: ver-${{ github.sha }}
           region: us-west-2
           deployment_package: deploy.zip
 
