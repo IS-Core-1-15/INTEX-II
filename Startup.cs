@@ -100,6 +100,8 @@ namespace INTEX_II
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute("severityPageSize", "Severity-{severity}/PageSize-{pageSize}/Page-{pageNum}", new { Controller = "Home", action = "SummaryInformation", severity = 0, pageSize = 25, pageNum = 1 });
+
                 endpoints.MapControllerRoute("severitypage", "Severity-{severity}/Page-{pageNum}", new { Controller = "Home", action = "SummaryInformation", severity = 0, pageNum = 1});
 
                 endpoints.MapControllerRoute("Paging", "Page-{pageNum}", new { Controller = "Home", action = "SummaryInformation" , pageNum = 1});
@@ -109,10 +111,6 @@ namespace INTEX_II
                 endpoints.MapDefaultControllerRoute();
 
                 endpoints.MapRazorPages();
-
-                //endpoints.MapBlazorHub();
-
-                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
 
                 endpoints.MapControllerRoute(
                     name: "admin",

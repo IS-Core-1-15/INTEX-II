@@ -55,7 +55,8 @@ namespace INTEX_II.Controllers
                     CrashesPerPage = pageSize,
                     CurrentPage = pageNum
                 }
-            };
+
+    };
 
             return View(yeet);
         }

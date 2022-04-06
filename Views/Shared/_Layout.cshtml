@@ -83,8 +83,14 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" asp-controller="Admin" asp-action="Main">Admin</a></li>
-                    <li><a class="dropdown-item" href="/account/logout">Logout</a></li>
+                    @if (Context.User.Identity.IsAuthenticated)
+                    {
+                        <li><a class="dropdown-item" href="/account/logout">Logout</a></li>
+                    }
+                    else
+                    {
+                        <li><a class="dropdown-item" asp-controller="Admin" asp-action="Main">User Login</a></li>
+                    }
                 </ul>
             </li>
         </ul>
@@ -159,7 +165,14 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    UR MOM
+                    @if (Context.User.Identity.IsAuthenticated)
+                    {
+                        <p>@Context.User.Identity.Name</p>
+                    }
+                    else
+                    {
+                        <p>Guest</p>
+                    }
                 </div>
             </nav>
         </div>
