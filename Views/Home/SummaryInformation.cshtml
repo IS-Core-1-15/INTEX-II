@@ -12,22 +12,90 @@
             <div class="col-9">
 
 
-                <div class="text-center">
-                    <h1 class="display-4">Crashes</h1>
+                <!--<div class="text-center">
+        <h1 class="display-4">Crashes</h1>-->
+                <!--section for crashes listed out on page-->
+                <!--@@foreach (Crash c in Model.Crashes)
+    {
+        <partial name="CrashSummary" model="@@c" />
+    }-->
+                <!--links ot other pages of crashes-->
+                <!--<div page-links="@@Model.PageInfo" page-action="SummaryInformation" page-classes-enabled="true"
+             page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
+             class="btn-group pull-right m-1">
+        </div>
 
-                    <!--section for crashes listed out on page-->
-                    @foreach (Crash c in Model.Crashes)
-                    {
-                        <partial name="CrashSummary" model="@c" />
-                    }
+    </div>-->
 
-                    <!--links ot other pages of crashes-->
-                    <div page-links="@Model.PageInfo" page-action="SummaryInformation" page-classes-enabled="true"
-                         page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
-                         class="btn-group pull-right m-1">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        List of Crashes
                     </div>
+                    <div class="card-body">
+                        <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                            <div class="dataTable-top">
+                                <div class="dataTable-dropdown">
+                                    <label>
+                                        <select onchange="changeRecordCount(this.value);" class="dataTable-selector">
+                                            <option value="" disabled selected>Select an option</option>
+                                            <option value="5">5</option>
+                                            <option value="10">10</option>
+                                            <option value="15">15</option>
+                                            <option value="20">20</option>
+                                            <option value="25">25</option>
+                                        </select> entries per page
+                                    </label>
+                                </div>
+                                <script>
 
+                                    function changeRecordCount(recordCount) {
+
+                                        //This is very broken and it makes me cry tears out of my eyes
+                                        currentUrl = window.location.href;
+                                        currentUrl = currentUrl.slice(0, currentUrl.indexOf("/", 16));
+                                        window.location = currentUrl + '?pageSize=' + recordCount;
+
+                                    }
+
+                                </script>
+                                <div class="dataTable-search">
+                                    <input class="dataTable-input" placeholder="Search..." type="text">
+                                </div>
+                            </div>
+                            <div class="dataTable-container">
+                                <table id="datatablesSimple" class="dataTable-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Crash ID</th>
+                                            <th>Date</th>
+                                            <th>County</th>
+                                            <th>City</th>
+                                            <th>Crash Severity</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (Crash c in Model.Crashes)
+                                        {
+                                            <partial name="CrashSummary" model="@c" />
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="dataTable-bottom">
+                                <div class="dataTable-info">Showing ?? to ?? of ?? entries MAKE THIS DYNAMIC OR I''LL CHONCH</div>
+                                @*<nav class="dataTable-pagination">*@
+                                <!--links to other pages of crashes-->
+                                <div page-links="@Model.PageInfo" page-action="SummaryInformation" page-classes-enabled="true"
+                                     page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
+                                     class="btn-group pull-right m-1">
+                                </div>
+                                @*</nav>*@
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

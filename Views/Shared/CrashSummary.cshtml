@@ -4,7 +4,7 @@
 @model Crash
 
 <!--individual crash summary-->
-<div class="card card-outline-primary m-1 p-1">
+@*<div class="card card-outline-primary m-1 p-1">
     <div class="bg-light p-1">
         <h4>
             Crash ID: @Model.CRASH_ID
@@ -23,4 +23,13 @@
         </ul>
 
     </div>
-</div>
+</div>*@
+
+@* Crash rows for a table *@
+<tr>
+    <td>@Model.CRASH_ID</td>
+    <td>@Model.CRASH_DATETIME</td>
+    <td>@Model.COUNTY_NAME</td>
+    <td>@Model.CITY</td>
+    <td>@Model.CRASH_SEVERITY_ID</td>
+</tr>
