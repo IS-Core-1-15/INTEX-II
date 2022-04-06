@@ -44,11 +44,11 @@ namespace INTEX_II
                 options.UseMySql(Configuration["ConnectionStrings:IdentityConnection"]);
             });
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<AppIdentityDbContext>();
-
-            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //services.AddIdentity<IdentityUser, IdentityRole>()
             //    .AddEntityFrameworkStores<AppIdentityDbContext>();
+
+            services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<AppIdentityDbContext>();
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -97,6 +97,8 @@ namespace INTEX_II
             app.UseSession();
 
             app.UseRouting();
+
+            //app.UseMiddleware();
 
             app.UseAuthentication();
             
