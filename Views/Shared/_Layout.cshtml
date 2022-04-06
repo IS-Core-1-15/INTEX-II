@@ -165,7 +165,14 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    UR MOM
+                    @if (Context.User.Identity.IsAuthenticated)
+                    {
+                        <p>@Context.User.Identity.Name</p>
+                    }
+                    else
+                    {
+                        <p>Guest</p>
+                    }
                 </div>
             </nav>
         </div>
