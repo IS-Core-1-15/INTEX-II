@@ -38,12 +38,16 @@
                                 <div class="dataTable-dropdown">
                                     <label>
                                         <select onchange="changeRecordCount(this.value);" class="dataTable-selector">
-                                            <option value="" disabled selected>Select an option</option>
-                                            <option value="5">5</option>
-                                            <option value="10">10</option>
-                                            <option value="15">15</option>
-                                            <option value="20">20</option>
-                                            <option value="25">25</option>
+                                            <option value="" disabled selected>@ViewBag.pageSize</option>
+                                            <option value="" disabled>-----</option>
+
+                                            @for (var i = 5; i <= 25; i += 5)
+                                            {
+                                                @if (ViewBag.pageSize != i)
+                                                {
+                                                    <option value="@i">@i</option>
+                                                }
+                                            }
                                         </select> entries per page
                                     </label>
                                 </div>
@@ -58,9 +62,9 @@
                                     }
 
                                 </script>
-                                <div class="dataTable-search">
+                                @*<div class="dataTable-search">
                                     <input class="dataTable-input" placeholder="Search..." type="text">
-                                </div>
+                                </div>*@
                             </div>
                             <div class="dataTable-container">
                                 <table id="datatablesSimple" class="dataTable-table">

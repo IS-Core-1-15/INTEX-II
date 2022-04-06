@@ -33,6 +33,7 @@ namespace INTEX_II.Controllers
         //get summary view page
         public IActionResult SummaryInformation(int severity, int pageNum = 1, int pageSize = 25)
         {
+            ViewBag.pageSize = pageSize;
             //max crashes per page
             //int pageSize = 25; //Now passed in parameter
 
