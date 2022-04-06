@@ -24,6 +24,7 @@ namespace INTEX_II
                     {
                         // Replace __ tokens in the configuration key name
                         ops.KeyGenerator = (secret, name) => name.Replace("__", ":");
+
                     });
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
