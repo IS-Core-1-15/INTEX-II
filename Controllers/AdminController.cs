@@ -27,7 +27,7 @@ namespace INTEX_II.Controllers
         //}
 
         //Admin get
-        public IActionResult Main(string countyName, int pageNum = 1)
+        public IActionResult Main(int severity = 0, int pageNum = 1)
         {
             //max crashes per page
             int pageSize = 25;
@@ -35,19 +35,23 @@ namespace INTEX_II.Controllers
             var yeet = new CrashesViewModel
             {
                 //crashes queryable with only crashes in filter
-                Crashes = _repo.Crashes
-                .Where(c => c.COUNTY_NAME == countyName || countyName == null)
-                .OrderBy(c => c.CRASH_DATETIME)
+                Crashes = (severity == 0 ? _repo.Crashes
+                .OrderBy(c => c.CRASH_ID)
                 .Skip(pageSize * (pageNum - 1))
                 .Take(pageSize)
-                .ToList(),
+                .ToList() : _repo.Crashes
+                .Where(c => c.CRASH_SEVERITY_ID == severity)
+                .OrderBy(c => c.CRASH_ID)
+                .Skip(pageSize * (pageNum - 1))
+                .Take(pageSize)
+                .ToList()),
 
                 // page info saved as type page info
                 PageInfo = new PageInfo
                 {
-                    TotalNumCrashes = (countyName == null ?
+                    TotalNumCrashes = (severity == 0 ?
                         _repo.Crashes.Count()
-                        : _repo.Crashes.Where(yeet => yeet.COUNTY_NAME == countyName).Count()),
+                        : _repo.Crashes.Where(yeet => yeet.CRASH_SEVERITY_ID == severity).Count()),
                     CrashesPerPage = pageSize,
                     CurrentPage = pageNum
                 }

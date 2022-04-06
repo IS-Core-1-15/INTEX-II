@@ -100,11 +100,11 @@ namespace INTEX_II
 
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapControllerRoute("countypage", "{countyName}/Page-{pageNum}", new { Controller = "Home", action = "SummaryInformation" });
+                //endpoints.MapControllerRoute("severitypage", "{severity}/Page-{pageNum}", new { Controller = "Home", action = "SummaryInformation" });
 
                 //endpoints.MapControllerRoute("Paging", "Page-{pageNum}", new { Controller = "Home", action = "SummaryInformation" , pageNum = 1});
 
-                //endpoints.MapControllerRoute("county", "{countyName}", new { Controller = "Home", action = "SummaryInformation" });
+                //endpoints.MapControllerRoute("severity", "{severity}", new { Controller = "Home", action = "SummaryInformation" });
 
                 endpoints.MapDefaultControllerRoute();
 
