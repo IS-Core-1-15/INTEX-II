@@ -76,11 +76,13 @@ namespace INTEX_II.Controllers
         }
 
         [HttpPost]
-        public IActionResult Calculator(PredictorForm rawForm)
+        public IActionResult Calculator(RawForm raw)
         {
+            PredictorForm data = new PredictorForm(raw);
+
             var result = _session.Run(new List<NamedOnnxValue>
             {
-                NamedOnnxValue.CreateFromTensor("float_input", rawForm.AsTensor())
+                NamedOnnxValue.CreateFromTensor("float_input", data.AsTensor())
             });
             Tensor<float> score = result.First().AsTensor<float>();
             var prediction = new Prediction { PredictedValue = score.First() };

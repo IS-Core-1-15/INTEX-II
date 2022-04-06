@@ -8,7 +8,49 @@
 
 <p>Calculator</p>
 
-<form method="post" asp-controller="Home" asp-action="Calculator">
-    <label asp-for=""></label>
+<p>@(ViewBag.results != null ? ViewBag.results : "No Data")</p>
 
+<form method="post" asp-controller="Home" asp-action="Calculator">
+    <label asp-for="PEDESTRIAN_INVOLVED">Pedestrian</label>
+    <input type="checkbox" asp-for="PEDESTRIAN_INVOLVED" />
+    <br />
+
+    <label asp-for="BICYCLIST_INVOLVED">Bike</label>
+    <input type="checkbox" asp-for="BICYCLIST_INVOLVED" />
+    <br />
+
+    <label asp-for="MOTORCYCLE_INVOLVED">Motorcycle</label>
+    <input type="checkbox" asp-for="MOTORCYCLE_INVOLVED" />
+    <br />
+
+    <label asp-for="IMPROPER_RESTRAINT">No Seatbelt</label>
+    <input type="checkbox" asp-for="IMPROPER_RESTRAINT" />
+    <br />
+
+    <label asp-for="DUI">DUI</label>
+    <input type="checkbox" asp-for="DUI" />
+    <br />
+
+    <label asp-for="INTERSECTION_RELATED">Intersection</label>
+    <input type="checkbox" asp-for="INTERSECTION_RELATED" />
+    <br />
+
+    <label asp-for="OVERTURN_ROLLOVER">overturn</label>
+    <input type="checkbox" asp-for="OVERTURN_ROLLOVER" />
+    <br />
+
+    <label asp-for="OLDER_DRIVER_INVOLVED">older</label>
+    <input type="checkbox" asp-for="OLDER_DRIVER_INVOLVED" />
+    <br />
+
+    <label asp-for="CRASH_MONTH">month</label>
+    <input type="number" asp-for="CRASH_MONTH" />
+    <br />
+
+    <label asp-for="CRASH_YEAR">year</label>
+    <input type="number" asp-for="CRASH_YEAR" />
+    <br />
+
+
+    <button type="submit" class="btn btn-primary">Calculate</button>
 </form>

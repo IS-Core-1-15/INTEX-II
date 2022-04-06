@@ -11,7 +11,7 @@ namespace INTEX_II.Models
         public bool INTERSECTION_RELATED { get; set; }
         public bool OVERTURN_ROLLOVER { get; set; }
         public bool OLDER_DRIVER_INVOLVED { get; set; }
-        public int CRASH_MONTH { get; set; }
-        public int CRASH_YEAR { get; set; }
+        public float CRASH_MONTH { get; set; }
+        public float CRASH_YEAR { get; set; }
     }
 }

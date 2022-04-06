@@ -17,6 +17,32 @@ namespace INTEX_II.Models
         public float CRASH_MONTH { get; set; }
         public float CRASH_YEAR { get; set; }
 
+        public PredictorForm(RawForm raw)
+        {
+            PEDESTRIAN_INVOLVED = BoolToFloat(raw.PEDESTRIAN_INVOLVED);
+            BICYCLIST_INVOLVED = BoolToFloat(raw.BICYCLIST_INVOLVED);
+            MOTORCYCLE_INVOLVED = BoolToFloat(raw.MOTORCYCLE_INVOLVED);
+            IMPROPER_RESTRAINT = BoolToFloat(raw.IMPROPER_RESTRAINT);
+            DUI = BoolToFloat(raw.DUI);
+            INTERSECTION_RELATED = BoolToFloat(raw.INTERSECTION_RELATED);
+            OVERTURN_ROLLOVER = BoolToFloat(raw.OVERTURN_ROLLOVER);
+            OLDER_DRIVER_INVOLVED = BoolToFloat(raw.OLDER_DRIVER_INVOLVED);
+            CRASH_MONTH = raw.CRASH_MONTH;
+            CRASH_YEAR = raw.CRASH_YEAR;
+        }
+
+        private float BoolToFloat(bool input)
+        {
+            if (input)
+            {
+                return 1.0F;
+            }
+            else
+            {
+                return 0.0F;
+            }
+        }
+
         public Tensor<float> AsTensor()
         {
             float[] data = new float[]
