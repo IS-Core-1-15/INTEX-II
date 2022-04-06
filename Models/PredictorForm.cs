@@ -48,7 +48,7 @@ namespace INTEX_II.Models
             float[] data = new float[]
             {
             PEDESTRIAN_INVOLVED, BICYCLIST_INVOLVED, MOTORCYCLE_INVOLVED, IMPROPER_RESTRAINT,
-            DUI, INTERSECTION_RELATED, OVERTURN_ROLLOVER, OLDER_DRIVER_INVOLVED
+            DUI, INTERSECTION_RELATED, OVERTURN_ROLLOVER, OLDER_DRIVER_INVOLVED, CRASH_YEAR, CRASH_MONTH
             };
             int[] dimensions = new int[] { 1, 10 };
             return new DenseTensor<float>(data, dimensions);

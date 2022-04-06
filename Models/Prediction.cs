@@ -3,6 +3,6 @@ namespace INTEX_II.Models
 {
     public class Prediction
     {
-        public float PredictedValue { get; set; }
+        public int PredictedValue { get; set; }
     }
 }
