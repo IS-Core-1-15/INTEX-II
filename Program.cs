@@ -18,15 +18,6 @@ namespace INTEX_II
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration((hostingContext, config) =>
-                {
-                    config.AddSecretsManager(configurator: ops =>
-                    {
-                        // Replace __ tokens in the configuration key name
-                        ops.KeyGenerator = (secret, name) => name.Replace("__", ":");
-
-                    });
-                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
