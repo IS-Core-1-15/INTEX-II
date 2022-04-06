@@ -11,7 +11,7 @@
     @foreach (int s in Model)
     {
         <a asp-controller="Home" asp-action="SummaryInformation" asp-route-severity="@s"
-           asp-route-pageNum="1" class="btn m-1 @(ViewBag.SelectedSeverity == s ? "btn-primary" : "btn-outline-secondary")">@s</a>
+           asp-route-pageNum="1" class="btn m-1 @(Int32.Parse(ViewBag.SelectedSeverity) == s ? "btn-primary" : "btn-outline-secondary")">@s</a>
         <br />
 
     }
