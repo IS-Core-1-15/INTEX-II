@@ -2,6 +2,8 @@
 using INTEX_II.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.ML.OnnxRuntime;
+using Microsoft.ML.OnnxRuntime.Tensors;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,8 +15,15 @@ namespace INTEX_II.Controllers
     public class HomeController : Controller
     {
         private ICrashRepository _repo;
+        private InferenceSession _session;
 
-        public HomeController(ICrashRepository temp) => _repo = temp;
+
+        public HomeController(ICrashRepository temp, InferenceSession session)
+        {
+            _repo = temp;
+            _session = session;
+
+        }
 
         //// take out later possibly
         //private readonly ILogger<HomeController> _logger;
@@ -58,6 +67,25 @@ namespace INTEX_II.Controllers
             };
 
             return View(yeet);
+        }
+
+        [HttpGet]
+        public IActionResult Calculator()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Calculator(PredictorForm rawForm)
+        {
+            var result = _session.Run(new List<NamedOnnxValue>
+            {
+                NamedOnnxValue.CreateFromTensor("float_input", rawForm.AsTensor())
+            });
+            Tensor<float> score = result.First().AsTensor<float>();
+            var prediction = new Prediction { PredictedValue = score.First() };
+            result.Dispose();
+            return View("Calculator", prediction);
         }
 
 

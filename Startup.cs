@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Protocols;
+using Microsoft.ML.OnnxRuntime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,6 +69,10 @@ namespace INTEX_II
             services.AddSession();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddSingleton<InferenceSession>(
+                new InferenceSession("Models/model.onnx")
+            );
 
             services.AddServerSideBlazor();
         }
