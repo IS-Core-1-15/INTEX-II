@@ -1,0 +1,33 @@
+name: main
+on:
+  push:
+    branches: [ master, gitactions ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git setup
+        uses: actions/checkout@v2
+      
+      - name: Dotnet run
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1' # SDK Version to use; x will use the latest version of the 3.1 channel
+      
+      - name: Publish prod
+        run: dotnet publish -r linux-x64 --configuration "Release" -o ./site;
+
+      - name: Generate deployment package 
+        run: cd site/; zip -r ../deploy.zip .
+
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v16
+        with:
+          aws_access_key: ${{ secrets.ACCESSKEYID }}
+          aws_secret_key: ${{ secrets.SECRETACCESSKEY }}
+          application_name: UtahCrashData
+          environment_name: Utahcrashdata-env
+          version_label: ${{ github.run_id }}
+          region: us-west-2
+          deployment_package: ./deploy.zip
