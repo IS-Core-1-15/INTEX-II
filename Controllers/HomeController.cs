@@ -34,6 +34,7 @@ namespace INTEX_II.Controllers
         public IActionResult SummaryInformation(int severity, int pageNum = 1, int pageSize = 25)
         {
             ViewBag.pageSize = pageSize;
+            ViewBag.pageNum = pageNum;
             //max crashes per page
             //int pageSize = 25; //Now passed in parameter
 
@@ -61,6 +62,8 @@ namespace INTEX_II.Controllers
                     CurrentPage = pageNum
                 }
             };
+
+            ViewBag.totalCrashes = (severity == 0 ? _repo.Crashes.Count() : _repo.Crashes.Where(yeet => yeet.CRASH_SEVERITY_ID == severity).Count());
 
             return View(yeet);
         }
