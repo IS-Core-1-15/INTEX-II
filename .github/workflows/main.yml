@@ -1,7 +1,7 @@
 name: main
 on:
   push:
-    branches: [ master, gitactions ]
+    branches: [ master ]
 
 jobs:
   build:

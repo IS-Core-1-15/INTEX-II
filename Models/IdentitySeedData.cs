@@ -12,6 +12,7 @@ namespace INTEX_II.Models
 {
     public static class IdentitySeedData
     {
+        // TODO: Remove idenity seed data
         //create constants for username and password for the admin user
         private const string adminUser = "Admin";
         private const string adminPassword = "413ExtraYeetPeriod(t)!";
