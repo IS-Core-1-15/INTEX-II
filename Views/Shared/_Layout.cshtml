@@ -1,58 +1,4 @@
-﻿@*
-    This is the old layout file commented out.
-    
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - INTEX_II</title>
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </head>
-    <body>
-        <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">INTEX_II</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <partial name="_LoginPartial" />
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
-        <div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
-        </div>
-
-        <footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2022 - INTEX_II - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-        </footer>
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-        @RenderSection("Scripts", required: false)
-    </body>
-    </html>
-*@
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -60,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    <meta http-equiv="Content-Security-Policy: default-src 'none'; form-action 'none'; frame-ancestors 'none';">
     <title>@ViewData["Title"] - UTAH DOT Crash Information</title>
     <link rel="shortcut icon" href="~/assets/car_favicon.png" type="image/x-icon">
     <link href="~/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://app.enzuzo.com/apps/enzuzo/static/js/__enzuzo-cookiebar.js?uuid=1bd31b4a-b5ee-11ec-aebd-1f806a5e3d44"></script>
 </head>
 <body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark custom-nav-bar-bg">
@@ -81,10 +29,16 @@
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto me-0 me-md-3 my-2 my-md-0">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw" style=@((Context.User.Identity.IsAuthenticated) ? "color:burlywood" : "")></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" asp-controller="Admin" asp-action="Main">Admin</a></li>
-                    <li><a class="dropdown-item" href="/account/logout">Logout</a></li>
+                    @if (Context.User.Identity.IsAuthenticated)
+                    {
+                        <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">Logout</a></li>
+                    }
+                    else
+                    {
+                        <li><a class="dropdown-item" asp-controller="Account" asp-action="Login">User Login</a></li>
+                    }
                 </ul>
             </li>
         </ul>
@@ -159,7 +113,14 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    UR MOM
+                    @if (Context.User.Identity.IsAuthenticated)
+                    {
+                        <p>@Context.User.Identity.Name</p>
+                    }
+                    else
+                    {
+                        <p>Guest</p>
+                    }
                 </div>
             </nav>
         </div>
@@ -168,34 +129,35 @@
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">@ViewData["Title"]</h1>
                     @*<ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Static Navigation</li>
-                    </ol>*@
+                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Static Navigation</li>
+                </ol>*@
                     @*<div class="card mb-4">
-                        <div class="card-body">
-                            <p class="mb-0">
-                                This page is an example of using static navigation. By removing the
-                                <code>.sb-nav-fixed</code>
-                                class from the
-                                <code>body</code>
-                                , the top navigation and side navigation will become static on scroll. Scroll down this page to see an example.
-                            </p>
-                        </div>
-                    </div>*@
+                    <div class="card-body">
+                        <p class="mb-0">
+                            This page is an example of using static navigation. By removing the
+                            <code>.sb-nav-fixed</code>
+                            class from the
+                            <code>body</code>
+                            , the top navigation and side navigation will become static on scroll. Scroll down this page to see an example.
+                        </p>
+                    </div>
+                </div>*@
                     @RenderBody()
                     @*<div style="height: 100vh"></div>
-                    <div class="card mb-4"><div class="card-body">When scrolling, the navigation stays at the top of the page. This is the end of the static navigation demo.</div></div>*@
+                <div class="card mb-4"><div class="card-body">When scrolling, the navigation stays at the top of the page. This is the end of the static navigation demo.</div></div>*@
                 </div>
             </main>
+
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
                         <div class="text-muted">Copyright &copy; BYU IS Group 1-15 Productions, 2022</div>
-                        @*<div>
-                            <a href="#">Privacy Policy</a>
+                        <div>
+                            <a asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
                             &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>*@
+                            <a asp-controller="Home" asp-action="Cookies">Cookies Policy</a>
+                        </div>
                     </div>
                 </div>
             </footer>

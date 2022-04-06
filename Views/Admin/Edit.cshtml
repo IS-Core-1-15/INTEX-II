@@ -13,7 +13,8 @@
             <input type="hidden" asp-for="CRASH_ID" />
             <div class="form-group">
                 <label asp-for="CRASH_DATETIME" class="control-label"></label>
-                <input asp-for="CRASH_DATETIME" class="form-control" />
+                <input asp-for="CRASH_DATETIME" type="datetime-local" class="form-control" 
+                       value="@ViewBag.dateTime"/>
                 <span asp-validation-for="CRASH_DATETIME" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -43,16 +44,22 @@
             </div>
             <div class="form-group">
                 <label asp-for="CITY" class="control-label"></label>
-                <input asp-for="CITY" class="form-control" />
+                <select asp-for="CITY" class="form-control">
+                    <option value="@Model.CITY"disabled selected>@Model.CITY</option>
+                    <vc:city></vc:city>
+                </select>
                 <span asp-validation-for="CITY" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="COUNTY_NAME" class="control-label"></label>
-                <input asp-for="COUNTY_NAME" class="form-control" />
+                <select asp-for="COUNTY_NAME" class="form-control">
+                    <option value="@Model.COUNTY_NAME" disabled selected>@Model.COUNTY_NAME</option>
+                    <vc:county></vc:county>
+                </select>
                 <span asp-validation-for="COUNTY_NAME" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CRASH_SEVERITY_ID" class="control-label"></label>
+                <label asp-for="CRASH_SEVERITY_ID" class="control-label"></label> (From 1 - No injury to 5 - Fatal)
                 <input asp-for="CRASH_SEVERITY_ID" class="form-control" />
                 <span asp-validation-for="CRASH_SEVERITY_ID" class="text-danger"></span>
             </div>

@@ -27,17 +27,21 @@ namespace INTEX_II
 
         public IConfiguration Configuration { get; }
 
+        string crashconn = Environment.GetEnvironmentVariable("CrashConnection");
+
+        string identityconn = Environment.GetEnvironmentVariable("IdentityConnection");
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<CrashContext>(options =>
             {
-                options.UseMySql(Environment.GetEnvironmentVariable("CrashConnection"));
+                options.UseMySql(Configuration["ConnectionStrings:CrashConnection"]);
             });
 
             services.AddDbContext<AppIdentityDbContext>(options =>
             {
-                options.UseMySql(Environment.GetEnvironmentVariable("IdentityConnection"));
+                options.UseMySql(Configuration["ConnectionStrings:IdentityConnection"]);
             });
 
             services.AddIdentity<IdentityUser, IdentityRole>()
@@ -100,19 +104,17 @@ namespace INTEX_II
 
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapControllerRoute("countypage", "{countyName}/Page-{pageNum}", new { Controller = "Home", action = "SummaryInformation" });
+                endpoints.MapControllerRoute("severityPageSize", "Severity-{severity}/PageSize-{pageSize}/Page-{pageNum}", new { Controller = "Home", action = "SummaryInformation", severity = 0, pageSize = 25, pageNum = 1 });
 
-                //endpoints.MapControllerRoute("Paging", "Page-{pageNum}", new { Controller = "Home", action = "SummaryInformation" , pageNum = 1});
+                endpoints.MapControllerRoute("severitypage", "Severity-{severity}/Page-{pageNum}", new { Controller = "Home", action = "SummaryInformation", severity = 0, pageNum = 1});
 
-                //endpoints.MapControllerRoute("county", "{countyName}", new { Controller = "Home", action = "SummaryInformation" });
+                endpoints.MapControllerRoute("Paging", "Page-{pageNum}", new { Controller = "Home", action = "SummaryInformation" , pageNum = 1});
+
+                endpoints.MapControllerRoute("severity", "Severity-{severity}", new { Controller = "Home", action = "SummaryInformation", severity = 0 });
 
                 endpoints.MapDefaultControllerRoute();
 
                 endpoints.MapRazorPages();
-
-                //endpoints.MapBlazorHub();
-
-                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
 
                 endpoints.MapControllerRoute(
                     name: "admin",
