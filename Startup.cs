@@ -100,7 +100,7 @@ namespace INTEX_II
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("severityPageSize", "Severity-{severity}/Page-{pageNum}/PageSize-{pageSize}", new { Controller = "Home", action = "SummaryInformation", severity = 0, pageNum = 1, pageSize = 25});
+                endpoints.MapControllerRoute("severityPageSize", "Severity-{severity}/PageSize-{pageSize}/Page-{pageNum}", new { Controller = "Home", action = "SummaryInformation", severity = 0, pageSize = 25, pageNum = 1 });
 
                 endpoints.MapControllerRoute("severitypage", "Severity-{severity}/Page-{pageNum}", new { Controller = "Home", action = "SummaryInformation", severity = 0, pageNum = 1});
 
