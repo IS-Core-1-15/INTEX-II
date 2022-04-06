@@ -30,14 +30,16 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw" style=@((Context.User.Identity.IsAuthenticated) ? "color:burlywood" : "")></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    @if (Context.User.Identity.IsAuthenticated)
+                    <partial name="_LoginPartial" />
+                    @*@if (Context.User.Identity.IsAuthenticated)
                     {
                         <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">Logout</a></li>
                     }
                     else
                     {
                         <li><a class="dropdown-item" asp-controller="Account" asp-action="Login">User Login</a></li>
-                    }
+                        <li><a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a></li>
+                    }*@
                 </ul>
             </li>
         </ul>

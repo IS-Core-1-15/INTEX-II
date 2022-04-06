@@ -40,7 +40,7 @@ namespace INTEX_II
                 options.UseMySql(Configuration["ConnectionStrings:IdentityConnection"]);
             });
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<AppIdentityDbContext>();
 
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -100,6 +100,8 @@ namespace INTEX_II
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute("areaRoute", "{area}/{controller=Account}/{action=Index}");
+
                 endpoints.MapControllerRoute("severityPageSize", "Severity-{severity}/PageSize-{pageSize}/Page-{pageNum}", new { Controller = "Home", action = "SummaryInformation", severity = 0, pageSize = 25, pageNum = 1 });
 
                 endpoints.MapControllerRoute("severitypage", "Severity-{severity}/Page-{pageNum}", new { Controller = "Home", action = "SummaryInformation", severity = 0, pageNum = 1});
