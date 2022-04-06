@@ -181,34 +181,35 @@
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">@ViewData["Title"]</h1>
                     @*<ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Static Navigation</li>
-                    </ol>*@
+                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Static Navigation</li>
+                </ol>*@
                     @*<div class="card mb-4">
-                        <div class="card-body">
-                            <p class="mb-0">
-                                This page is an example of using static navigation. By removing the
-                                <code>.sb-nav-fixed</code>
-                                class from the
-                                <code>body</code>
-                                , the top navigation and side navigation will become static on scroll. Scroll down this page to see an example.
-                            </p>
-                        </div>
-                    </div>*@
+                    <div class="card-body">
+                        <p class="mb-0">
+                            This page is an example of using static navigation. By removing the
+                            <code>.sb-nav-fixed</code>
+                            class from the
+                            <code>body</code>
+                            , the top navigation and side navigation will become static on scroll. Scroll down this page to see an example.
+                        </p>
+                    </div>
+                </div>*@
                     @RenderBody()
                     @*<div style="height: 100vh"></div>
-                    <div class="card mb-4"><div class="card-body">When scrolling, the navigation stays at the top of the page. This is the end of the static navigation demo.</div></div>*@
+                <div class="card mb-4"><div class="card-body">When scrolling, the navigation stays at the top of the page. This is the end of the static navigation demo.</div></div>*@
                 </div>
             </main>
+
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
                         <div class="text-muted">Copyright &copy; BYU IS Group 1-15 Productions, 2022</div>
-                        @*<div>
-                            <a href="#">Privacy Policy</a>
+                        <div>
+                            <a asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
                             &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>*@
+                            <a asp-controller="Home" asp-action="Cookies">Cookies Policy</a>
+                        </div>
                     </div>
                 </div>
             </footer>

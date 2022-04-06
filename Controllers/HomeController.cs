@@ -30,6 +30,16 @@ namespace INTEX_II.Controllers
             return View();
         }
 
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult Cookies()
+        {
+            return View();
+        }
+
         //get summary view page
         public IActionResult SummaryInformation(int severity, int pageNum = 1, int pageSize = 25)
         {
