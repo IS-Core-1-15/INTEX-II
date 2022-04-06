@@ -51,10 +51,9 @@
 
                                     function changeRecordCount(recordCount) {
 
-                                        //This is very broken and it makes me cry tears out of my eyes
                                         currentUrl = window.location.href;
-                                        currentUrl = currentUrl.slice(0, currentUrl.indexOf("/", 16));
-                                        window.location = currentUrl + '?pageSize=' + recordCount;
+                                        currentUrl = currentUrl.slice(0, currentUrl.indexOf("/", 30));
+                                        window.location = currentUrl + '/Page-1/pageSize-' + recordCount;
 
                                     }
 
