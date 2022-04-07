@@ -44,6 +44,9 @@ namespace INTEX_II
                 options.UseMySql(Configuration["ConnectionStrings:IdentityConnection"]);
             });
 
+            // TODO Not sure if we need IdentityRole put back in somehow
+            // removed when I was messing with 2FA but it might be able to work fine now...
+
             //services.AddIdentity<IdentityUser, IdentityRole>()
             //    .AddEntityFrameworkStores<AppIdentityDbContext>();
 
