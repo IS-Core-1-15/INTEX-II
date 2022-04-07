@@ -18,6 +18,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.11.0" />
+
   </ItemGroup>
 
   <ItemGroup>
@@ -27,5 +29,14 @@
     <None Remove="Microsoft.AspNetCore.Identity.UI" />
     <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
     <None Remove="Microsoft.EntityFrameworkCore.Tools" />
+    <None Remove="Model\" />
+    <None Remove="Microsoft.ML.OnnxRuntime.Managed" />
+    <None Remove="Microsoft.ML.OnnxTransformer" />
+    <None Remove="Microsoft.ML.OnnxRuntime.MKLML" />
+    <None Remove="Microsoft.ML.OnnxRuntime" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
+
   </ItemGroup>
 </Project>
