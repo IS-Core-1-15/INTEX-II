@@ -47,7 +47,7 @@
             <div class="form-group">
                 <label asp-for="CITY" class="control-label"></label>
                 <select asp-for="CITY" class="form-control">
-                    <option value="@Model.CITY"disabled selected>@Model.CITY</option>
+                    <option value="@Model.CITY">@Model.CITY</option>
                     <vc:city></vc:city>
                 </select>
                 <span asp-validation-for="CITY" class="text-danger"></span>
@@ -55,14 +55,22 @@
             <div class="form-group">
                 <label asp-for="COUNTY_NAME" class="control-label"></label>
                 <select asp-for="COUNTY_NAME" class="form-control">
-                    <option value="@Model.COUNTY_NAME" disabled selected>@Model.COUNTY_NAME</option>
+                    <option value="@Model.COUNTY_NAME">@Model.COUNTY_NAME</option>
                     <vc:county></vc:county>
                 </select>
                 <span asp-validation-for="COUNTY_NAME" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CRASH_SEVERITY_ID" class="control-label"></label> (From 1 - No injury to 5 - Fatal)
-                <input asp-for="CRASH_SEVERITY_ID" class="form-control" />
+                @*<input asp-for="CRASH_SEVERITY_ID" class="form-control" />*@
+                <select asp-for="CRASH_SEVERITY_ID" class="form-control">
+                    <option value="" disabled selected>Please Select A Value</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
                 <span asp-validation-for="CRASH_SEVERITY_ID" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
@@ -160,13 +168,12 @@
                     <input class="form-check-input" asp-for="ROADWAY_DEPARTURE" /> @Html.DisplayNameFor(model => model.ROADWAY_DEPARTURE)
                 </label>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary btn-sm" />
+                <input type="submit" value="Save" class="btn btn-warning custom-btn-warning" /> |
+                <a asp-action="Main" asp-route-pageNum="@ViewBag.pageNumReturn" class="btn btn-warning custom-btn-secondary">Cancel</a>
             </div>
+            <br />
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Main" asp-route-pageNum="@ViewBag.pageNumReturn" class="btn btn-secondary btn-sm">Cancel</a>
 </div>
