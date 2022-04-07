@@ -39,4 +39,10 @@
     <Folder Include="Model\" />
 
   </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\model.onnx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\model.onnx" />
+  </ItemGroup>
 </Project>
