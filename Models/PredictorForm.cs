@@ -50,7 +50,7 @@ namespace INTEX_II.Models
             PEDESTRIAN_INVOLVED, BICYCLIST_INVOLVED, MOTORCYCLE_INVOLVED, IMPROPER_RESTRAINT, UNRESTRAINED,
             DUI, INTERSECTION_RELATED, OVERTURN_ROLLOVER, OLDER_DRIVER_INVOLVED, CRASH_MONTH
             };
-            int[] dimensions = new int[] { 1, 9 };
+            int[] dimensions = new int[] { 1, 10 };
             return new DenseTensor<float>(data, dimensions);
         }
     }
