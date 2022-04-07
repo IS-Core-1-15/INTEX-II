@@ -1,0 +1,67 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Calculator";
+}
+
+@model RawForm
+
+<h3>About The Calculator</h3>
+<p>The purpose of this calculator is to do things with stuff. --Prof. S.</p>
+
+<hr />
+
+<p>@(ViewBag.results != null ? ViewBag.results : "No Data")</p>
+
+<hr />
+
+<h3>Calculator Inputs</h3>
+
+<form method="post" asp-controller="Home" asp-action="Calculator">
+
+    <input type="checkbox" asp-for="PEDESTRIAN_INVOLVED" />
+    <label asp-for="PEDESTRIAN_INVOLVED">Pedestrian</label>
+    <br />
+
+    <input type="checkbox" asp-for="BICYCLIST_INVOLVED" />
+    <label asp-for="BICYCLIST_INVOLVED">Bike</label>
+    <br />
+
+    <input type="checkbox" asp-for="MOTORCYCLE_INVOLVED" />
+    <label asp-for="MOTORCYCLE_INVOLVED">Motorcycle</label>
+    <br />
+
+    <input type="checkbox" asp-for="IMPROPER_RESTRAINT" />
+    <label asp-for="IMPROPER_RESTRAINT">No Seatbelt</label>
+    <br />
+
+    <input type="checkbox" asp-for="UNRESTRAINED" />
+    <label asp-for="UNRESTRAINED">Unrestrained</label>
+    <br />
+
+    <input type="checkbox" asp-for="DUI" />
+    <label asp-for="DUI">DUI</label>
+    <br />
+
+    <input type="checkbox" asp-for="INTERSECTION_RELATED" />
+    <label asp-for="INTERSECTION_RELATED">Intersection</label>
+    <br />
+
+    <input type="checkbox" asp-for="OVERTURN_ROLLOVER" />
+    <label asp-for="OVERTURN_ROLLOVER">Overturn</label>
+    <br />
+
+    <input type="checkbox" asp-for="OLDER_DRIVER_INVOLVED" />
+    <label asp-for="OLDER_DRIVER_INVOLVED">Senior Citizen</label>
+    <br /><br />
+
+    <label asp-for="CRASH_MONTH">Month</label><br />
+    <input type="number" asp-for="CRASH_MONTH" />
+    <br />
+    <br />
+
+    <button type="submit" class="btn btn-lg btn-warning custom-btn-warning">Calculate</button>
+
+</form>
+<br />
