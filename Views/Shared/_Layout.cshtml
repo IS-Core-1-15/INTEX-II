@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -91,6 +91,10 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-car-burst"></i></div>
                             Crash Statistics
                         </a>
+                        <a class="nav-link" asp-controller="Home" asp-action="Calculator">
+                            <div class="sb-nav-link-icon"><i class="fas fa-calculator"></i></div>
+                            Calculator
+                        </a>
                         <a class="nav-link" asp-controller="Admin" asp-action="Main" asp-route-pageNum="1">
                             <div class="sb-nav-link-icon"><i class="fas fa-key"></i></div>
                             Admin
@@ -113,7 +117,7 @@
         <div id="layoutSidenav_content">
             <main class="custom-content-background">
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">@ViewData["Title"]</h1>
+                    <h1 class="mt-4">@ViewData["Header"]</h1>
                     @*<ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                             <li class="breadcrumb-item active">Static Navigation</li>

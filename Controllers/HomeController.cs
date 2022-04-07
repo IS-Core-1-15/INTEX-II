@@ -2,6 +2,8 @@
 using INTEX_II.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.ML.OnnxRuntime;
+using Microsoft.ML.OnnxRuntime.Tensors;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,8 +15,15 @@ namespace INTEX_II.Controllers
     public class HomeController : Controller
     {
         private ICrashRepository _repo;
+        private InferenceSession _session;
 
-        public HomeController(ICrashRepository temp) => _repo = temp;
+
+        public HomeController(ICrashRepository temp, InferenceSession session)
+        {
+            _repo = temp;
+            _session = session;
+
+        }
 
         //// take out later possibly
         //private readonly ILogger<HomeController> _logger;
@@ -76,6 +85,31 @@ namespace INTEX_II.Controllers
             ViewBag.totalCrashes = (severity == 0 ? _repo.Crashes.Count() : _repo.Crashes.Where(yeet => yeet.CRASH_SEVERITY_ID == severity).Count());
 
             return View(yeet);
+        }
+
+        [HttpGet]
+        public IActionResult Calculator()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Calculator(RawForm raw)
+        {
+            PredictorForm data = new PredictorForm(raw);
+
+            var result = _session.Run(new List<NamedOnnxValue>
+            {
+                NamedOnnxValue.CreateFromTensor("float_input", data.AsTensor())
+            });
+
+            var stringResult = result.ToList()[0].AsTensor<long>().ToArray<long>()[0].ToString();
+            var score = Int32.Parse(stringResult);
+
+            ViewBag.results = score;
+            
+            result.Dispose();
+            return View("Calculator");
         }
 
 

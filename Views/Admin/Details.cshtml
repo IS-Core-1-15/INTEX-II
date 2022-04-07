@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Crash Details";
+    ViewData["Header"] = ViewData["Title"];
 }
 
 <h1>Details</h1>
@@ -181,6 +182,7 @@
     </table>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.CRASH_ID" asp-route-returnPage="@ViewBag.pageNumReturn" class="btn btn-warning btn-sm">Edit</a> |
-    <a asp-action="Main" asp-route-pageNum="@ViewBag.pageNumReturn" class="btn btn-secondary btn-sm">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.CRASH_ID" asp-route-returnPage="@ViewBag.pageNumReturn" class="btn btn-warning custom-btn-warning">Edit</a> |
+    <a asp-action="Main" asp-route-pageNum="@ViewBag.pageNumReturn" class="btn btn-warning custom-btn-secondary">Back to List</a>
 </div>
+<br />

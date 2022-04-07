@@ -6,6 +6,14 @@
     <RootNamespace>INTEX_II</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Kralizek.Extensions.Configuration.AWSSecretsManager" Version="1.6.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
@@ -18,6 +26,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.11.0" />
+
   </ItemGroup>
 
   <ItemGroup>
@@ -27,5 +37,22 @@
     <None Remove="Microsoft.AspNetCore.Identity.UI" />
     <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
     <None Remove="Microsoft.EntityFrameworkCore.Tools" />
+    <None Remove="Model\" />
+    <None Remove="Microsoft.ML.OnnxRuntime.Managed" />
+    <None Remove="Microsoft.ML.OnnxTransformer" />
+    <None Remove="Microsoft.ML.OnnxRuntime.MKLML" />
+    <None Remove="Microsoft.ML.OnnxRuntime" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
+
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\model.onnx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Model\model.onnx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
