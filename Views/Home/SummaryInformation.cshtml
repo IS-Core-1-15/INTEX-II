@@ -11,23 +11,6 @@
                 <vc:severity></vc:severity>
             </div>
             <div class="col-9">
-
-
-                <!--<div class="text-center">
-        <h1 class="display-4">Crashes</h1>-->
-                <!--section for crashes listed out on page-->
-                <!--@@foreach (Crash c in Model.Crashes)
-    {
-        <partial name="CrashSummary" model="@@c" />
-    }-->
-                <!--links ot other pages of crashes-->
-                <!--<div page-links="@@Model.PageInfo" page-action="SummaryInformation" page-classes-enabled="true"
-             page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
-             class="btn-group pull-right m-1">
-        </div>
-
-    </div>-->
-
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
@@ -63,9 +46,6 @@
                                     }
 
                                 </script>
-                                @*<div class="dataTable-search">
-                                    <input class="dataTable-input" placeholder="Search..." type="text">
-                                </div>*@
                             </div>
                             <div class="dataTable-container">
                                 <table id="datatablesSimple" class="dataTable-table">
@@ -90,13 +70,11 @@
                                 <div class="dataTable-info">Showing @(ViewBag.pageSize * (ViewBag.pageNum - 1) + 1) to
                                 @(((ViewBag.pageSize * ViewBag.pageNum) > ViewBag.totalCrashes) ? ViewBag.totalCrashes : (ViewBag.pageSize * ViewBag.pageNum)) of 
                                 @ViewBag.totalCrashes crashes</div>
-                                @*<nav class="dataTable-pagination">*@
                                 <!--links to other pages of crashes-->
                                 <div page-links="@Model.PageInfo" page-action="SummaryInformation" page-classes-enabled="true"
                                      page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
                                      class="btn-group pull-right m-1">
                                 </div>
-                                @*</nav>*@
                             </div>
                         </div>
                     </div>

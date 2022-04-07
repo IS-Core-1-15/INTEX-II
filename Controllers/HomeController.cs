@@ -25,25 +25,19 @@ namespace INTEX_II.Controllers
 
         }
 
-        //// take out later possibly
-        //private readonly ILogger<HomeController> _logger;
-
-        //public HomeController(ILogger<HomeController> logger)
-        //{
-        //    _logger = logger;
-        //}
-
         //index get
         public IActionResult Index()
         {
             return View();
         }
 
+        // privacy statement
         public IActionResult Privacy()
         {
             return View();
         }
 
+        // cookies statement
         public IActionResult Cookies()
         {
             return View();
@@ -54,8 +48,6 @@ namespace INTEX_II.Controllers
         {
             ViewBag.pageSize = pageSize;
             ViewBag.pageNum = pageNum;
-            //max crashes per page
-            //int pageSize = 25; //Now passed in parameter
 
             var yeet = new CrashesViewModel
             {
@@ -110,13 +102,6 @@ namespace INTEX_II.Controllers
             
             result.Dispose();
             return View("Calculator");
-        }
-
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
