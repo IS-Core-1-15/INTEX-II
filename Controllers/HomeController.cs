@@ -19,20 +19,16 @@ namespace INTEX_II.Controllers
         // take out later possibly
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
 
         private ICrashRepository _repo;
         private InferenceSession _session;
 
 
-        public HomeController(ICrashRepository temp, InferenceSession session)
+        public HomeController(ICrashRepository temp, InferenceSession session, ILogger<HomeController> logger)
         {
             _repo = temp;
             _session = session;
-
+            _logger = logger;
         }
 
         //index get
