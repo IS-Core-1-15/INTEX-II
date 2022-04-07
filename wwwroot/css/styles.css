@@ -7917,6 +7917,38 @@ textarea.form-control-lg {
     border-bottom-left-radius: 25px;
 }
 
+.custom-btn-secondary {
+    background-image: linear-gradient(to bottom right, grey, grey);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.custom-btn-danger {
+    background-image: linear-gradient(to bottom right, orange, red);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.custom-btn-success {
+    background-image: linear-gradient(to bottom right, green, yellow);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.custom-btn-info {
+    background-image: linear-gradient(to bottom right, #0dcaf0, blue);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
 .custom-content-background {
     background-image: linear-gradient(to bottom right, rgb(221 221 221), white);
 }
