@@ -11,14 +11,24 @@ namespace INTEX_II.Models
         [Key]
         [Required]
         public int CRASH_ID { get; set; }
+        [Required]
         public string CRASH_DATETIME { get; set; }
+        [Required] 
         public int ROUTE { get; set; }
+        [Required] 
         public double MILEPOINT { get; set; }
+        [Required]
         public double LAT_UTM_Y { get; set; }
+        [Required]
         public double LONG_UTM_X { get; set; }
+        [Required] 
         public string MAIN_ROAD_NAME { get; set; }
+        [Required] 
         public string CITY { get; set; }
+        [Required] 
         public string COUNTY_NAME { get; set; }
+        [Required]
+        [Range(1,5,ErrorMessage ="Crash severity must be a number between 1 and 5, 1 meaning no injury and 5 meaning fatal injuries")]
         public int CRASH_SEVERITY_ID { get; set; }
         public bool WORK_ZONE_RELATED { get; set; }
         public bool PEDESTRIAN_INVOLVED { get; set; }

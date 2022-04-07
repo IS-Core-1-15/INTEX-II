@@ -1,0 +1,9 @@
+﻿@{
+}
+@model string[]
+
+<!--options for counties dropdown-->
+@foreach (string c in Model)
+{
+    <option value="@c">@c</option>
+}
