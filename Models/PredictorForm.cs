@@ -10,6 +10,7 @@ namespace INTEX_II.Models
         public float BICYCLIST_INVOLVED { get; set; }
         public float MOTORCYCLE_INVOLVED { get; set; }
         public float IMPROPER_RESTRAINT { get; set; }
+        public float UNRESTRAINED { get; set; }
         public float DUI { get; set; }
         public float INTERSECTION_RELATED { get; set; }
         public float OVERTURN_ROLLOVER { get; set; }
@@ -22,6 +23,7 @@ namespace INTEX_II.Models
             BICYCLIST_INVOLVED = BoolToFloat(raw.BICYCLIST_INVOLVED);
             MOTORCYCLE_INVOLVED = BoolToFloat(raw.MOTORCYCLE_INVOLVED);
             IMPROPER_RESTRAINT = BoolToFloat(raw.IMPROPER_RESTRAINT);
+            UNRESTRAINED = BoolToFloat(raw.IMPROPER_RESTRAINT);
             DUI = BoolToFloat(raw.DUI);
             INTERSECTION_RELATED = BoolToFloat(raw.INTERSECTION_RELATED);
             OVERTURN_ROLLOVER = BoolToFloat(raw.OVERTURN_ROLLOVER);
@@ -45,7 +47,7 @@ namespace INTEX_II.Models
         {
             float[] data = new float[]
             {
-            PEDESTRIAN_INVOLVED, BICYCLIST_INVOLVED, MOTORCYCLE_INVOLVED, IMPROPER_RESTRAINT,
+            PEDESTRIAN_INVOLVED, BICYCLIST_INVOLVED, MOTORCYCLE_INVOLVED, IMPROPER_RESTRAINT, UNRESTRAINED,
             DUI, INTERSECTION_RELATED, OVERTURN_ROLLOVER, OLDER_DRIVER_INVOLVED, CRASH_MONTH
             };
             int[] dimensions = new int[] { 1, 9 };

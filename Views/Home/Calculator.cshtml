@@ -19,7 +19,7 @@
 <h3>Calculator Inputs</h3>
 
 <form method="post" asp-controller="Home" asp-action="Calculator">
-    
+
     <input type="checkbox" asp-for="PEDESTRIAN_INVOLVED" />
     <label asp-for="PEDESTRIAN_INVOLVED">Pedestrian</label>
     <br />
@@ -34,6 +34,10 @@
 
     <input type="checkbox" asp-for="IMPROPER_RESTRAINT" />
     <label asp-for="IMPROPER_RESTRAINT">No Seatbelt</label>
+    <br />
+
+    <input type="checkbox" asp-for="UNRESTRAINED" />
+    <label asp-for="UNRESTRAINED">No Seatbelt</label>
     <br />
 
     <input type="checkbox" asp-for="DUI" />

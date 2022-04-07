@@ -7,6 +7,7 @@ namespace INTEX_II.Models
         public bool BICYCLIST_INVOLVED { get; set; }
         public bool MOTORCYCLE_INVOLVED { get; set; }
         public bool IMPROPER_RESTRAINT { get; set; }
+        public bool UNRESTRAINED { get; set; }
         public bool DUI { get; set; }
         public bool INTERSECTION_RELATED { get; set; }
         public bool OVERTURN_ROLLOVER { get; set; }
