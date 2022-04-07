@@ -51,6 +51,6 @@
     <Content Remove="wwwroot\model.onnx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="wwwroot\model.onnx" />
+    <None Include="wwwroot\assets\model.onnx" />
   </ItemGroup>
 </Project>
