@@ -4,12 +4,15 @@
 @model CrashesViewModel
 
 <div class="text-center">
-    <h1 class="display-4">Crashes</h1>
-
-    <a asp-action="Add" asp-route-returnPage="@Model.PageInfo.CurrentPage" class="btn btn-info custom-btn-success"><b>Create New Record</b></a>
+    <h1><u>Crashes</u></h1>
+    <br />
+    <div class="text-end">
+        <a asp-action="Add" asp-route-returnPage="@Model.PageInfo.CurrentPage" class="btn btn-info custom-btn-success"><b>Create New Record</b></a>
+        <br /><br />
+    </div>
 
     <!--table of crashes-->
-    <table class="table table-sm table-striped table-bordered table-hover">
+    <table class="table table-sm table-striped table-bordered table-hover text-center">
 
         <thead>
             <tr>
