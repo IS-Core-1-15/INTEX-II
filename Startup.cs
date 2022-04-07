@@ -125,8 +125,6 @@ namespace INTEX_II
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
-
-            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }
