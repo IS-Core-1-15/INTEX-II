@@ -56,7 +56,7 @@
                                     function changeRecordCount(recordCount) {
 
                                         currentUrl = window.location.href;
-                                        currentUrl = currentUrl.slice(0, currentUrl.indexOf("/", currentUrl.indexOf("-", 0)));
+                                        currentUrl = currentUrl.slice(0, currentUrl.indexOf("/", 30));
                                         window.location = currentUrl + '/pageSize-' + recordCount + '/Page-1';
 
                                     }
