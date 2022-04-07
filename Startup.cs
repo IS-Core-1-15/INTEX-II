@@ -44,11 +44,14 @@ namespace INTEX_II
                 options.UseMySql(Configuration["ConnectionStrings:IdentityConnection"]);
             });
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<AppIdentityDbContext>();
+            // TODO Not sure if we need IdentityRole put back in somehow
+            // removed when I was messing with 2FA but it might be able to work fine now...
 
-            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //services.AddIdentity<IdentityUser, IdentityRole>()
             //    .AddEntityFrameworkStores<AppIdentityDbContext>();
+
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<AppIdentityDbContext>();
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -125,8 +128,6 @@ namespace INTEX_II
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
-
-            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }
