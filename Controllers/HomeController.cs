@@ -84,11 +84,21 @@ namespace INTEX_II.Controllers
             {
                 NamedOnnxValue.CreateFromTensor("float_input", data.AsTensor())
             });
-            var score = result.ToList()[0].AsTensor<int>();
+            var Test = result.ToList()[0].AsTensor<long>().ToArray<long>()[0].ToString();
+            var score = Int32.Parse(Test);
+            ViewBag.results = score;
+            
+
             //var score = result.First().Value;
-            ViewBag.results = Convert.ToInt32(score);
+            //var score = result.First().AsDictionary<string, int>();
+            //score = result.AsDictionary<string, int>();
+
             //int i = int.Parse(score);
-            //Tensor<int> score = result.First().AsTensor<int>();
+
+
+            
+            //Tensor<float> tscore = score.AsTensor<float>();
+            //ViewBag.results = score;
             //var prediction = new Prediction { PredictedValue = score };
             result.Dispose();
             return View("Calculator");
