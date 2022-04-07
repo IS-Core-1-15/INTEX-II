@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BookStore.Infrastructure
+namespace INTEX_II.Infrastructure
 {
     public static class UrlExtensions
     {

@@ -25,6 +25,7 @@ namespace INTEX_II.Infrastructure
 
         public PageInfo PageLinks { get; set; }
         public string PageAction { get; set; }
+
         // for css styling
         public bool PageClassesEnabled { get; set; } = false;
         public string PageClass { get; set; }

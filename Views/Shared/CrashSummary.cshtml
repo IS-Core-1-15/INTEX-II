@@ -3,29 +3,6 @@
 }
 @model Crash
 
-<!--individual crash summary-->
-@*<div class="card card-outline-primary m-1 p-1">
-    <div class="bg-light p-1">
-        <h4>
-            Crash ID: @Model.CRASH_ID
-            <span class="badge badge-pill badge-primary" style="float:right">
-                <small>@Model.CRASH_SEVERITY_ID</small>
-            </span>
-        </h4>
-    </div>
-    <div class="card-text p-1">
-        <ul class="list-unstyled">
-            <li>Date: @Model.CRASH_DATETIME</li>
-            <li>County: @Model.COUNTY_NAME</li>
-            <li>City: @Model.CITY</li>
-            <li>Severity: @Model.CRASH_SEVERITY_ID</li>
-
-        </ul>
-
-    </div>
-</div>*@
-
-@* Crash rows for a table *@
 <tr>
     <td>@Model.CRASH_ID</td>
     <td>@Model.CRASH_DATETIME</td>

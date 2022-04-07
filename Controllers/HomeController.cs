@@ -25,25 +25,19 @@ namespace INTEX_II.Controllers
 
         }
 
-        //// take out later possibly
-        //private readonly ILogger<HomeController> _logger;
-
-        //public HomeController(ILogger<HomeController> logger)
-        //{
-        //    _logger = logger;
-        //}
-
         //index get
         public IActionResult Index()
         {
             return View();
         }
 
+        // privacy statement
         public IActionResult Privacy()
         {
             return View();
         }
 
+        // cookies statement
         public IActionResult Cookies()
         {
             return View();
@@ -54,8 +48,6 @@ namespace INTEX_II.Controllers
         {
             ViewBag.pageSize = pageSize;
             ViewBag.pageNum = pageNum;
-            //max crashes per page
-            //int pageSize = 25; //Now passed in parameter
 
             var yeet = new CrashesViewModel
             {
@@ -105,18 +97,34 @@ namespace INTEX_II.Controllers
 
             var stringResult = result.ToList()[0].AsTensor<long>().ToArray<long>()[0].ToString();
             var score = Int32.Parse(stringResult);
+            string output;
 
-            ViewBag.results = score;
+            switch (score)
+            {
+                case 5:
+                    output = "5: Fatal";
+                    break;
+                case 4:
+                    output = "4: Suspected serious injury";
+                    break;
+                case 3:
+                    output = "3: Suspected minor injury";
+                    break;
+                case 2:
+                    output = "2: Possible injury";
+                    break;
+                case 1:
+                    output = "1: No injury";
+                    break;
+                default:
+                    output = "Error calculating results";
+                    break;
+            }
+
+            ViewBag.results = output;
             
             result.Dispose();
             return View("Calculator");
-        }
-
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

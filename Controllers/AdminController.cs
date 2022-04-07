@@ -18,14 +18,6 @@ namespace INTEX_II.Controllers
 
         public AdminController(ICrashRepository temp) => _repo = temp;
 
-        //// take out later possibly
-        //private readonly ILogger<HomeController> _logger;
-
-        //public HomeController(ILogger<HomeController> logger)
-        //{
-        //    _logger = logger;
-        //}
-
         //Admin get
         public IActionResult Main(int severity = 0, int pageNum = 1)
         {
@@ -61,6 +53,7 @@ namespace INTEX_II.Controllers
             return View(yeet);
         }
 
+        // Returns a details view with the information of the crash passed in
         public IActionResult Details(int id, int returnPage)
         {
             var crash = _repo.Crashes.FirstOrDefault(yeet => yeet.CRASH_ID == id);
@@ -69,6 +62,7 @@ namespace INTEX_II.Controllers
             return View(crash);
         }
 
+        // View for adding a crash
         [HttpGet]
         public IActionResult Add(int returnPage)
         {
@@ -77,6 +71,7 @@ namespace INTEX_II.Controllers
             return View();
         }
 
+        // Post request and redirect of adding a new crash
         [HttpPost]
         public IActionResult Add(Crash c)
         {
@@ -93,6 +88,7 @@ namespace INTEX_II.Controllers
             }
         }
 
+        // Get request prefilling that crashes information
         [HttpGet]
         public IActionResult Edit(int id, int returnPage)
         {
@@ -105,6 +101,7 @@ namespace INTEX_II.Controllers
             return View(crash);
         }
 
+        // Post request and redirect when saving edited info
         [HttpPost]
         public IActionResult Edit(Crash c)
         {
@@ -122,6 +119,7 @@ namespace INTEX_II.Controllers
             }
         }
 
+        // confirms that you want to delete a particular crash
         [HttpGet]
         public IActionResult DeleteConfirmation(int id, int returnPage)
         {
@@ -132,6 +130,7 @@ namespace INTEX_II.Controllers
             return View(crash);
         }
 
+        // redirects to Main after confirming that you want to delete
         [HttpPost]
         public IActionResult DeleteConfirmation(int id)
         {
@@ -140,13 +139,6 @@ namespace INTEX_II.Controllers
             _repo.DeleteCrash(c);
 
             return RedirectToAction("Main");
-        }
-
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
