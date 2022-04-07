@@ -78,7 +78,7 @@ namespace INTEX_II
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddSingleton(
-                new InferenceSession("Models/model.onnx")
+                new InferenceSession("Model/model.onnx")
             );
 
             services.AddServerSideBlazor();
