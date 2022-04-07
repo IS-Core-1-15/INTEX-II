@@ -15,7 +15,6 @@ namespace INTEX_II.Models
         public float OVERTURN_ROLLOVER { get; set; }
         public float OLDER_DRIVER_INVOLVED { get; set; }
         public float CRASH_MONTH { get; set; }
-        public float CRASH_YEAR { get; set; }
 
         public PredictorForm(RawForm raw)
         {
@@ -28,7 +27,6 @@ namespace INTEX_II.Models
             OVERTURN_ROLLOVER = BoolToFloat(raw.OVERTURN_ROLLOVER);
             OLDER_DRIVER_INVOLVED = BoolToFloat(raw.OLDER_DRIVER_INVOLVED);
             CRASH_MONTH = raw.CRASH_MONTH;
-            CRASH_YEAR = raw.CRASH_YEAR;
         }
 
         private float BoolToFloat(bool input)
@@ -48,9 +46,9 @@ namespace INTEX_II.Models
             float[] data = new float[]
             {
             PEDESTRIAN_INVOLVED, BICYCLIST_INVOLVED, MOTORCYCLE_INVOLVED, IMPROPER_RESTRAINT,
-            DUI, INTERSECTION_RELATED, OVERTURN_ROLLOVER, OLDER_DRIVER_INVOLVED, CRASH_YEAR, CRASH_MONTH
+            DUI, INTERSECTION_RELATED, OVERTURN_ROLLOVER, OLDER_DRIVER_INVOLVED, CRASH_MONTH
             };
-            int[] dimensions = new int[] { 1, 10 };
+            int[] dimensions = new int[] { 1, 9 };
             return new DenseTensor<float>(data, dimensions);
         }
     }
