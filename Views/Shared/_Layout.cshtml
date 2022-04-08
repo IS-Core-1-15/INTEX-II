@@ -22,7 +22,7 @@
 
         <ul class="navbar-nav ms-auto me-0 me-md-3 my-2 my-md-0">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw" style=@((Context.User.Identity.IsAuthenticated) ? "color:burlywood" : "")></i></a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw" style=@((Context.User.Identity.IsAuthenticated) ? "color:lightblue" : "")></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><partial name="_LoginPartial" /></li>
                 </ul>
@@ -44,7 +44,7 @@
                         </a>
                         <a class="nav-link" asp-controller="Home" asp-action="Calculator">
                             <div class="sb-nav-link-icon"><i class="fas fa-calculator"></i></div>
-                            Calculator
+                            Severity Calculator
                         </a>
                         <a class="nav-link" asp-controller="Admin" asp-action="Main" asp-route-pageNum="1">
                             <div class="sb-nav-link-icon"><i class="fas fa-key"></i></div>
@@ -69,7 +69,7 @@
             <main class="custom-content-background">
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">@ViewData["Header"]</h1>
-                    @RenderBody();
+                    @RenderBody()
                 </div>
             </main>
 
