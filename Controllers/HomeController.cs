@@ -14,15 +14,21 @@ namespace INTEX_II.Controllers
 {
     public class HomeController : Controller
     {
+
+
+        // take out later possibly
+        private readonly ILogger<HomeController> _logger;
+
+
         private ICrashRepository _repo;
         private InferenceSession _session;
 
 
-        public HomeController(ICrashRepository temp, InferenceSession session)
+        public HomeController(ICrashRepository temp, InferenceSession session, ILogger<HomeController> logger)
         {
             _repo = temp;
             _session = session;
-
+            _logger = logger;
         }
 
         //index get
@@ -102,6 +108,13 @@ namespace INTEX_II.Controllers
             
             result.Dispose();
             return View("Calculator");
+        }
+
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

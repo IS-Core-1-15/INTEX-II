@@ -14,7 +14,11 @@ namespace INTEX_II.Controllers
     [Authorize]
     public class AdminController : Controller
     {
+        
+        
         private ICrashRepository _repo;
+
+
 
         public AdminController(ICrashRepository temp) => _repo = temp;
 
@@ -139,6 +143,13 @@ namespace INTEX_II.Controllers
             _repo.DeleteCrash(c);
 
             return RedirectToAction("Main");
+        }
+
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
