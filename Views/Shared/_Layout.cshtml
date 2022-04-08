@@ -32,7 +32,7 @@
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                <div class="sb-sidenav-menu custom-side-nav-bar-bg">
+                <div class="sb-sidenav-menu custom-side-nav-bar-bg" style="position:sticky;top:0">
                     <div class="nav">
                         <a class="nav-link" asp-controller="Home" asp-action="Index">
                             <div class="sb-nav-link-icon"><i class="fas fa-house"></i></div>
@@ -52,7 +52,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="sb-sidenav-footer">
+                <div class="sb-sidenav-footer" style="position:sticky;bottom:0">
                     <div class="small">Logged in as:</div>
                     @if (Context.User.Identity.IsAuthenticated)
                     {
