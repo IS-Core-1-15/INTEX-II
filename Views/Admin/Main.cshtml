@@ -8,7 +8,7 @@
     <h1><u>Crashes</u></h1>
     <br />
     <div class="text-end">
-        <a asp-action="Add" asp-route-returnPage="@Model.PageInfo.CurrentPage" class="btn btn-info custom-btn-success"><b>Create New Record</b></a>
+        <a asp-action="Add" asp-route-returnPage="@Model.PageInfo.CurrentPage" class="btn btn-success custom-btn-rounded"><b>Create New Record</b></a>
         <br /><br />
     </div>
 
@@ -36,13 +36,13 @@
                 <td>@c.CITY</td>
                 <td>@c.CRASH_SEVERITY_ID</td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@c.CRASH_ID" asp-route-returnPage="@Model.PageInfo.CurrentPage" class="btn btn-sm btn-info custom-btn-info">Details</a>
+                    <a asp-action="Details" asp-route-id="@c.CRASH_ID" asp-route-returnPage="@Model.PageInfo.CurrentPage" class="btn btn-sm btn-primary custom-btn-rounded">Details</a>
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@c.CRASH_ID" asp-route-returnPage="@Model.PageInfo.CurrentPage" class="btn btn-sm btn-warning custom-btn-warning">Edit</a>
+                    <a asp-action="Edit" asp-route-id="@c.CRASH_ID" asp-route-returnPage="@Model.PageInfo.CurrentPage" class="btn btn-sm btn-warning custom-btn-rounded">Edit</a>
                 </td>
                 <td>
-                    <a asp-action="DeleteConfirmation" asp-route-id="@c.CRASH_ID" asp-route-returnPage="@Model.PageInfo.CurrentPage" class="btn btn-sm btn-warning custom-btn-danger" >Delete</a>
+                    <a asp-action="DeleteConfirmation" asp-route-id="@c.CRASH_ID" asp-route-returnPage="@Model.PageInfo.CurrentPage" class="btn btn-sm btn-danger custom-btn-rounded" >Delete</a>
                 </td>
             </tr>
             }
