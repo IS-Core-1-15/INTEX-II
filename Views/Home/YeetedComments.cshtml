@@ -1,0 +1,29 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Feedback";
+
+    ViewData["Header"] = ViewData["Title"];
+}
+<p>
+    Thank you for using the site. If you would like to leave any feedback to make it better, please leave it 
+    in the field below. Thank you!
+</p>
+
+<input type="text" id="input" />
+<button onclick="yeet()">Send</button>
+
+<p id="comment"></p>
+<img src="~/img/yeeted_comment.gif" class="visually-hidden" id="bestgif" />
+
+<script>
+    function yeet() {
+        document.getElementById("comment").innerHTML = "Sending...";
+        setTimeout(() => {
+            document.getElementById("comment").innerHTML = "This functionality is not working right now. We have <b>yeeted</b> your comment into the nether.";
+            document.getElementById("input").value = "";
+            document.getElementById("bestgif").removeAttribute("class");
+        }, 3000);
+    }
+</script>
