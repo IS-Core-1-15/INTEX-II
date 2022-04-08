@@ -4,11 +4,10 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="content-security-policy"
-          content="base-uri 'self'; default-src 'self'; img-src 'self'; object-src 'self'; script-src 'self' https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js https://app.enzuzo.com/apps/enzuzo/static/js/__enzuzo-cookiebar.js?uuid=1bd31b4a-b5ee-11ec-aebd-1f806a5e3d44; style-src 'self'; font-src 'self' https://use.fontawesome.com/releases/v6.1.0/js/all.js; connect-src 'self'; form-action 'self'; upgrade-insecure-requests;" />
+          content="base-uri 'self'; img-src 'self'; object-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' ; form-action 'self'; upgrade-insecure-requests;" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <meta http-equiv="Content-Security-Policy: default-src 'none'; form-action 'none'; frame-ancestors 'none';">
     <title>@ViewData["Title"] - UTAH DOT Crash Information</title>
     <link rel="shortcut icon" href="~/assets/car_favicon.png" type="image/x-icon">
     <link href="~/css/styles.css" rel="stylesheet" />
@@ -24,7 +23,7 @@
 
         <ul class="navbar-nav ms-auto me-0 me-md-3 my-2 my-md-0">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw" style=@((Context.User.Identity.IsAuthenticated) ? "color:burlywood" : "")></i></a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw" style=@((Context.User.Identity.IsAuthenticated) ? "color:lightgreen" : "")></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><partial name="_LoginPartial" /></li>
                 </ul>
@@ -46,11 +45,15 @@
                         </a>
                         <a class="nav-link" asp-controller="Home" asp-action="Calculator">
                             <div class="sb-nav-link-icon"><i class="fas fa-calculator"></i></div>
-                            Calculator
+                            Severity Calculator
                         </a>
                         <a class="nav-link" asp-controller="Admin" asp-action="Main" asp-route-pageNum="1">
                             <div class="sb-nav-link-icon"><i class="fas fa-key"></i></div>
                             Admin
+                        </a>
+                        <a class="nav-link" asp-controller="Home" asp-action="YeetedComments">
+                            <div class="sb-nav-link-icon"><i class="fas fa-comment-dots"></i></div>
+                            Feedback
                         </a>
                     </div>
                 </div>
@@ -71,7 +74,7 @@
             <main class="custom-content-background">
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">@ViewData["Header"]</h1>
-                    @RenderBody();
+                    @RenderBody()
                 </div>
             </main>
 

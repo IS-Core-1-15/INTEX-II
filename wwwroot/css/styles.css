@@ -7906,11 +7906,11 @@ textarea.form-control-lg {
 }
 
 .custom-nav-bar-bg {
-    background-image: linear-gradient(to bottom right, orange, black);
+    background-image: linear-gradient(to bottom right, chocolate, brown);
 }
 
 .custom-btn-warning {
-    background-image: linear-gradient(to bottom right, orange, yellow);
+    background-image: linear-gradient(to bottom right, orange, orange);
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
@@ -7926,7 +7926,7 @@ textarea.form-control-lg {
 }
 
 .custom-btn-danger {
-    background-image: linear-gradient(to bottom right, orange, red);
+    background-image: linear-gradient(to bottom right, red, red);
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
@@ -7934,7 +7934,7 @@ textarea.form-control-lg {
 }
 
 .custom-btn-success {
-    background-image: linear-gradient(to bottom right, green, yellow);
+    background-image: linear-gradient(to bottom right, green, green);
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
@@ -7942,7 +7942,14 @@ textarea.form-control-lg {
 }
 
 .custom-btn-info {
-    background-image: linear-gradient(to bottom right, #0dcaf0, blue);
+    background-image: linear-gradient(to bottom right, #0dcaf0, #0dcaf0);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.custom-btn-rounded {
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
