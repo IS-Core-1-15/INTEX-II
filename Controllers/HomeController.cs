@@ -104,7 +104,31 @@ namespace INTEX_II.Controllers
             var stringResult = result.ToList()[0].AsTensor<long>().ToArray<long>()[0].ToString();
             var score = Int32.Parse(stringResult);
 
-            ViewBag.results = score;
+            string output;
+
+            switch (score)
+            {
+                case 5:
+                    output = "5: Fatal";
+                    break;
+                case 4:
+                    output = "4: Suspected serious injury";
+                    break;
+                case 3:
+                    output = "3: Suspected minor injury";
+                    break;
+                case 2:
+                    output = "2: Possible injury";
+                    break;
+                case 1:
+                    output = "1: No injury";
+                    break;
+                default:
+                    output = "Error calculating results";
+                    break;
+            }
+
+            ViewBag.results = output;
             
             result.Dispose();
             return View("Calculator");
