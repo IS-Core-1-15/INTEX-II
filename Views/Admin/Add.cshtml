@@ -13,7 +13,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="CRASH_DATETIME" class="control-label"></label>
-                <input asp-for="CRASH_DATETIME" type="datetime-local" class="form-control"/>
+                <input asp-for="CRASH_DATETIME" type="datetime-local" class="form-control" />
                 <span asp-validation-for="CRASH_DATETIME" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -28,12 +28,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="LAT_UTM_Y" class="control-label"></label>
-                <input asp-for="LAT_UTM_Y" class="form-control" />
+                <input asp-for="LAT_UTM_Y" class="form-control" id="lat"/>
                 <span asp-validation-for="LAT_UTM_Y" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LONG_UTM_X" class="control-label"></label>
-                <input asp-for="LONG_UTM_X" class="form-control" />
+                <input asp-for="LONG_UTM_X" class="form-control" id="long"/>
                 <span asp-validation-for="LONG_UTM_X" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -167,10 +167,71 @@
             </div>
             <br />
             <div class="form-group">
-                <input type="submit" value="Add" class="btn btn-success custom-btn-rounded" /> | 
+                <input type="submit" value="Add" class="btn btn-success custom-btn-rounded" /> |
                 <a asp-action="Main" asp-route-pageNum="@ViewBag.pageNumReturn" class="btn btn-secondary custom-btn-rounded">Cancel</a>
             </div>
             <br />
         </form>
     </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-7">
+        <!--google map for lat/long-->
+        <h5>Place a pin on the location of the crash to get latitude and longitude:</h5>
+            <style>
+                .col-md-7 {
+                    margin: 0;
+                    padding: 0;
+                }
+
+                #map {
+                    height: 50%;
+                    width: 70%;
+                }
+            </style>
+            
+            <div id="map"></div>
+            <script>
+                function initMap() {
+                    var myLatlng = { lat: 40, lng: -112 };
+                    var map = new google.maps.Map(document.getElementById("map"), {
+                        zoom: 6.5,
+                        center: myLatlng,
+                    });
+                    // Create the initial InfoWindow.
+                    let infoWindow = new google.maps.InfoWindow({
+                        content: "Click the map to get Lat/Lng!",
+                        position: myLatlng,
+                    });
+
+                    infoWindow.open(map);
+                    // Configure the click listener.
+                    map.addListener("click", (mapsMouseEvent) => {
+                        // Close the current InfoWindow.
+                        infoWindow.close();
+                        // Create a new InfoWindow.
+                        infoWindow = new google.maps.InfoWindow({
+                            position: mapsMouseEvent.latLng,
+                        });
+                        infoWindow.setContent(
+                            JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+                        );
+                        infoWindow.open(map);
+
+                        jsonString = JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2);
+
+                        var lat = jsonString.slice((jsonString.indexOf("lat", 0) + 6), jsonString.indexOf("lng") - 5);
+                        var lng = jsonString.slice((jsonString.indexOf("lng") + 6), jsonString.indexOf("}") -1);
+
+
+
+                        document.getElementById("lat").value = lat;
+                        document.getElementById("long").value = lng;
+                    });
+                }
+            </script>
+            <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=@ViewBag.apiKey&callback=initMap"></script>
+
+
+      </div>
 </div>

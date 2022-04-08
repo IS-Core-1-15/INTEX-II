@@ -14,13 +14,19 @@ namespace INTEX_II.Controllers
     [Authorize]
     public class AdminController : Controller
     {
-        
-        
+
+
         private ICrashRepository _repo;
 
+        private string _apiKey;
 
+        public AdminController(ICrashRepository temp, string stringThing)
+        {
+            _repo = temp;
+            _apiKey = stringThing;
+                
+        }
 
-        public AdminController(ICrashRepository temp) => _repo = temp;
 
         //Admin get
         public IActionResult Main(int severity = 0, int pageNum = 1)
@@ -72,6 +78,8 @@ namespace INTEX_II.Controllers
         {
             ViewBag.pageNumReturn = returnPage;
 
+            ViewBag.apiKey = _apiKey;
+
             return View();
         }
 
@@ -101,6 +109,8 @@ namespace INTEX_II.Controllers
             ViewBag.dateTime = DateTime.Parse(crash.CRASH_DATETIME).ToString("s");
 
             ViewBag.pageNumReturn = returnPage;
+
+            ViewBag.apiKey = _apiKey;
 
             return View(crash);
         }
