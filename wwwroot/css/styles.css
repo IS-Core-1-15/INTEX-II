@@ -7906,7 +7906,7 @@ textarea.form-control-lg {
 }
 
 .custom-nav-bar-bg {
-    background-image: linear-gradient(to bottom right, chocolate, brown);
+    background-image: linear-gradient(to right, #212529, #212529, #343A40);
 }
 
 .custom-btn-warning {

@@ -19,11 +19,23 @@
 
 <script>
     function yeet() {
-        document.getElementById("comment").innerHTML = "Sending...";
+        document.getElementById("comment").innerHTML = "Sending";
+        let time = 1000;
+        for (let i = 0; i < 3; i++) {
+            setTimeout(() => {
+                document.getElementById("comment").innerHTML += " .";
+            }, time);
+
+            time += 1000;
+        }
+
         setTimeout(() => {
             document.getElementById("comment").innerHTML = "This functionality is not working right now. We have <b>yeeted</b> your comment into the nether.";
             document.getElementById("input").value = "";
             document.getElementById("bestgif").removeAttribute("class");
-        }, 3000);
+        }, 4000);
+       
+        
+        
     }
 </script>
