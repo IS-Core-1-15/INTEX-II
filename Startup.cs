@@ -81,6 +81,10 @@ namespace INTEX_II
                 new InferenceSession("Model/model.onnx")
             );
 
+            services.AddSingleton(
+                new string(Configuration["ConnectionStrings:APIKEY"])
+            );
+
             services.AddServerSideBlazor();
 
             services.AddHsts(options =>
